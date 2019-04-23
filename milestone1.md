@@ -38,9 +38,9 @@ This screen shows the updated reminders page in our web app where the user can s
 ##### Screens 1-3 - Login Page and Sign-Up Page
 These screens show the login page of our mobile app with our logo at the top, options to sign up, login, or learn more about the app, and a short description of our app. When the user clicks on 'Sign Up', they are taken to the Sign Up Page (screen 2) with the option to click that the user is a caregiver or care receiver. In this case, the user clicks on care receiver and is taken to the care receiver sign up page (screen 3). There, they can input their personal information to create an account.
 ![Prototype](/milestone1_pics/IMG_1700.JPG)
-##### Screens 4-6 - Dashboard Page and Sign-Up Page
+##### Screens 4-6 - Dashboard Page and Message Page
 These screens show the dashboard page of our mobile app with the options to request a caregiver or call emergency services. In this case, the user clicks on 'Caregiver' and is connected to a caregiver (screen 5). Here, the user can see the caregiver's location via Google Maps and has the option to communicate directly with the caregiver. From there, the user can create a custom message for the caregiver (screen 6).
 ![Prototype](/milestone1_pics/IMG_1701.JPG)
-##### Screens 7-9 - Dashboard Page and Sign-Up Page
+##### Screens 7-9 - Reminders Page and Notifications Page
 These screens show the daily notifications/reminders page of our mobile app. From here, the user can see their reminders and move to notifications. Their notifications are messages between the user and the care receiver (screen 8). In this case, the user clicks on a message where the care receiver is making a request (screen 9).
 ![Prototype](/milestone1_pics/IMG_1702.JPG)
