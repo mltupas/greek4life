@@ -1,6 +1,3 @@
-
-
-// document.getElementById("#addProfile").onclick = function() {myFunction()};
 let profileDatabase = [];
 
 function myFunction() {
@@ -26,11 +23,10 @@ function myFunction() {
     connections : []
   }
 
+  const newProfile = {
+    [profileName] : profileInfo
+  }
 
-  // Object.values(profileInfo).forEach((e)	=>	{	//	no	loop
-     profileDatabase.push(profileInfo);
-    // console.log(e) });
-
-   alert("Profile Information Added!");
-
+  profileDatabase.push(newProfile);
+  alert("Profile Information Added!");
 }
