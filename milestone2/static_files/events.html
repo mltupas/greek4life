@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+  <head>
+  	<title>Events - Returning User</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link href="css/introHCI.css" rel="stylesheet" />
+    <link href="css/carousel.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/boostrap/3.3.7/css/bootstrap.min.css">
+  </head>
+
+  <div>
+    <a href="events.html">
+      <img src="images/greek2gofinalfinalBversion.png" alt="g2glogo" style="float:right;width:111px;height:84px;">
+    </a>
+  </div>
+
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">☰ Menu</button>
+    <button class="openbtn" onclick="goBack()">Go Back</button>
+  </div>
+
+  <body>
+    <div class="container">
+      <h1>Events</h1>
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="events.html"><i class="fa fa-fw fa-home"></i>Home</a>
+<!--         
+        <a href="profile.html"><i class="fa fa-fw fa-user-circle-o"></i>Profile</a>
+-->
+        <a href="explore.html"><i class="fa fa-fw fa-search"></i>Explore</a>
+        <a href="questionnaire_hub.html"><i class="fa fa-fw fa-question-circle"></i>Questionnaire</a>
+        <!--<a href="#"><i class="fa fa-fw fa-heart"></i>Favorites</a>-->
+        <a href="home.html" onclick="logout()"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+      </div>
+    </div>
+
+    <!-- <hr> -->
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+      <!-- Delete event that is currently showing in carousel -->
+      <button class="delete_event" id="delete_event" onclick="deleteEvent()">Delete Event</button>
+      <!-- Next and previous buttons -->
+      <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/greek2go.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/login.js"></script>
+
+  </body>
+</html>
