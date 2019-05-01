@@ -1,0 +1,19 @@
+# Team Name: 
+___Greek 4 Life___
+
+# Team Members: 
+___Allston Fojas, Mark Tupas, Raul Garza, Cole Richmond___
+
+# Project Idea:
+Contrary to our milestone 1 idea, we have switched our target population from the elderly to creative influencers in the musical industry. They are immensely popular among the young generation that loves to dance at the tune of various genres of music. From weddings to birthdays and from dance festivals to casual pool-side parties, music artists from different genres can be found everywhere. However, the phenomenal rise in the popularity of these artists has left aspiring artists searching for gigs and producers to put their talents on display for all to hear. Additionally, producers want to save time finding the right artist for their next project. In the end, producers want to collaborate with artists in hopes of gaining success. Using SoundCloud’s API, our hope is to embed an artist’s work into a list of search results for producers looking to collaborate and grow a brand. After a producer has listened to an artist’s work, they have the option to engage with their profile and check out their social media presence in addition to the rest of their musical portfolio. If they like what they see (and hear), the producer can then message the artist and proceed from this point as they see fit. This process allows the musical artists to continue to work on creating their mixes and hone in on their craft. At the same time, producers are engaging with them daily with the hope of finding the perfect fit!
+
+# Screenshots:
+### Screen 1 - Home Page:
+[ADD TEXT HERE]
+![Screenshot](/milestone2_pics/storyboard01.jpg)
+### Screen 2 - Profile Page:
+[ADD TEXT HERE]
+![Screenshot](/milestone2_pics/storyboard01.jpg)
+
+# Screenshots Explanation:
+[ADD TEXT HERE]
