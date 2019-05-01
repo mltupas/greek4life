@@ -9,9 +9,6 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
 
-	$(document).ready(() => {
-		$('#readButton').click(() => {
-			const requestURL = 'location/' + $('#locationBox').val();
 			console.log('making ajax request to:', requestURL);
 
 			$.ajax({
@@ -21,18 +18,7 @@
 				success: (data) => {
 					console.log('You received some data!', data);
 
-					if (data && data.name) {
-						$('#status').html('Successfully fetched data at URL: ' + requestURL);
-						$('#artistName').html('Artist: ' + data.name);
-						$('#artistGenre').html('Artist genre is: ' + data.genre);
-						$('#artistSong').html('Sample Song: ' + data.song);
-						$('#artistImage').attr('src', data.albumCover);
-					} else {
-						$('#status').html('Error: could not find item at URL: ' + requestURL);
-						$('#artistName').html('');
-						$('#artistGenre').html('');
-						$('#artistSong').html('');
-						$('#artistImage').attr('src', '').attr('width', '0px');
+
 					}
 				},
 			});
@@ -47,15 +33,6 @@
 </head>
 
 <body>
-	<h1>Hello, Producers!</h1>
-	
-	Search by City or Country: <input id="locationBox" type="text" size="20" />
-	<button id="readButton">Go</button>
-
-	<div id="artistName"></div>
-	<div id="artistGenre"></div>
-	<div id="artistSong"></div>
-	<div id="artistImage"></div>
 
 </body>
 

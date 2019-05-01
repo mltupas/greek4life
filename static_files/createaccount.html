@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+	<head>
+  		<title>Sign Up Page</title>
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<link href="./css/style.css" rel="stylesheet" />
+  	</head>
+
+  	<body>
+    	<form onsubmit="return createAccount()" action="home.html">
+      	<div class="container">
+        	<h1>Sign Up</h1>
+        	<p>Please fill in this form to create an account.</p>
+        	<hr>
+
+        	<p>First Name</p>
+        	<input placeholder="Enter First Name" type="text" id="first_name" required/>
+        	<p>Last Name</p>
+        	<input placeholder="Enter Last Name" type="text" id="last_name" required/>
+        	<p>Email</p>
+        	<input placeholder="Enter Email" type="text" id="new_email" required/>
+        	<p>Password</p>
+        	<input placeholder="Enter Password" type="password" id="new_pswd" required/>
+        	<p>Retype Password</p>
+        	<input placeholder="Re-enter your password" type="password" id="pswd_check" required/>
+        	<br>
+        	<button type="submit">Submit</button>
+      	</div>
+    	</form>
+
+    	<script src="https://code.jquery.com/jquery.js"></script>
+    	<script src="js/createaccount.js"></script>
+    	<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
