@@ -9,7 +9,7 @@ Contrary to our milestone 1 idea, we have switched our target population from th
 
 # Screenshots:
 ### Screen 1 - Home Page:
-![Screenshot](/milestone2_pics/home_page.png)
+![Screenshot](/milestone2_pics/home_page.jpg)
 This is a screenshot of our application's home page wherein producers will be able to search for artists based on which city they are currently located in. For now, we have limited our population of artists to those located in California. From here, producers will be able to parse through a list of profiles that are located within their desired city. If a producers likes what they see, they can choose to "Connect with Artist" at which point they will be brought to their profile. They may choose to connect via email or use any one of the artist's social media accounts to intiate a direct message.
 ### Screen 2 - Profile Page:
 ![Screenshot](/milestone2_pics/profile_page.png)
