@@ -1,0 +1,59 @@
+body {
+  background-color: #182B49;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #005e94;
+  color: #ffcf00;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+.login {
+  border-color: white;
+  border-width: 1px;
+  padding: 16px;
+	height: auto;
+	width: 30%;
+	margin: 0 auto;
+  color: white;
+}
+
+.login .links a {
+  float: left;
+  color: white;
+}
+
+.login .links #createaccount {
+	float: left;
+}
+
+.login .links #forgotpassword {
+  float: right;
+  color: white;
+}
+
+/*Change text color on create account page*/
+p {
+  color: white;
+}
