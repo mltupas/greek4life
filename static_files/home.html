@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  	<meta charset="utf-8">
+  	<title></title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="./css/style.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript">
+  
+	$(document).ready(() => {
+		$('#readButton').click(() => {
+			const requestURL = 'items/' + $('#itemBox').val();
+			console.log(requestURL);
+			console.log('making ajax request to:', requestURL);
+
+			$.ajax({
+				url: requestURL,
+				type: 'GET',
+				dataType: 'json',
+				success: (data) => {
+					console.log('You received some data!', data);
+
+					if (data.price && data.store) {
+						console.log('Found data!')
+						$('#status').html('Successfully fetched data at URL: ' + requestURL);
+						$('#foodDiv').html('My price is ' + data.price);
+						$('#foodImage').attr('src', data.image).attr('width', '300px');
+					} else {
+						console.log('Did not find data')
+						$('#status').html('Error: could not find item at URL: ' + requestURL);
+						$('#foodDiv').html('');
+						$('#foodImage').attr('src', '').attr('width', '0px');
+					}
+				},
+			});
+		});
+
+
+		$(document).ajaxError(() => {
+			$('#status').html('Error: unknown ajaxError!');
+		});
+	});
+</script>
+</head>
+
+<body>
+	<h1>Hello, world!</h1>
+
+	Item: <input id="itemBox" type="text" size="20" />
+	<button id="readButton">Search For Item</button>
+
+	<div id="status"></div>
+	<div id="foodDiv"></div>
+	<img id="foodImage"></img>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
