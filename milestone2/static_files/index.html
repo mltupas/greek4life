@@ -1,83 +1,35 @@
+<!DOCTYPE html>
+
 <html>
-<head>
-<title>ElderCare</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Login Page</title>
+		<meta name="author" content="">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="./css/style.css" rel="stylesheet">
+	</head>
 
-<script src="jquery-3.3.1.min.js"></script>
+	<body>
 
-<script type="text/javascript">
+        <h1>Chef App</h1>
+        
+		<form name="login" onsubmit="return validate()" action="home.html" method="get">
+			<div class="login">
+				Email<input type="text" id="email" required/>
+				Password<input type="password" name="pswd" id="pswd" required/>
+				<button type="submit">Login</button>
 
-// jQuery convention for running when the document has been fully loaded:
-$(document).ready(() => {
-  $('#readButton').click(() => {
-    const requestURL = 'users/' + $('#nameBox').val();
-    console.log('making ajax request to:', requestURL);
+				<div class="links">
+					<a href="createaccount.html" id="createaccount">Create Account</a>
+					<a href="forgotpassword.html" id="forgotpassword">Forgot Password?</a>
+				</div>
+				<br>
+			</div>
+		</form>
 
-    // From: http://learn.jquery.com/ajax/jquery-ajax-methods/
-    // Using the core $.ajax() method since it's the most flexible.
-    // ($.get() and $.getJSON() are nicer convenience functions)
-    $.ajax({
-      // all URLs are relative to http://localhost:3000/
-      url: requestURL,
-      type: 'GET',
-      dataType : 'json', // this URL returns data in JSON format
-      success: (data) => {
-        console.log('You received some data!', data);
+	    <script src="https://code.jquery.com/jquery.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
 
-        if (data) {
-          $('#status').html('Successfully fetched data at URL: ' + requestURL);
-          $('#company1Div').html('Company: ' + Object.values(data.list_of_agencies[0]));
-          $('#company2Div').html('Company: ' + Object.values(data.list_of_agencies[1]));
-          // $('#petImage').attr('src', data.pet).attr('width', '300px');
-        } else {
-          $('#status').html('Error: could not find user at URL: ' + requestURL);
-          // clear the display
-          $('#company1Div').html('');
-          $('#company2Div').html('');
-          // $('#petImage').attr('src', '').attr('width', '0px');
-        }
-      },
-    });
-  });
-
-  $('#allUsersButton').click(() => {
-    $.ajax({
-      url: 'users',
-      type: 'GET',
-      dataType : 'json',
-      success: (data) => {  
-        console.log('You received some data!', data);
-
-        if (data) {
-          $('#status').html('All service types: ' + data);
-        } else {
-          $('#status').html('Error: could not find any users');
-        }
-      },
-    });
-  });
-
-  // define a generic Ajax error handler:
-  // http://api.jquery.com/ajaxerror/
-  $(document).ajaxError(() => {
-    $('#status').html('Error: unknown ajaxError!');
-  });
-});
-</script>
-
-</head>
-<body>
-  <h1>Welcome to ElderCare!</h1>
-
-  Name: <input id="nameBox" type="text" size="20"/>
-  <button id="readButton">Get profile</button>
-  <button id="allUsersButton">Get all usernames</button>
-
-  <div id="company1Div"></div>
-  <div id="company2Div"></div>
-  <img id="petImage"></img>
-
-  <hr/>
-
-  <div id="status"></div>
-</body>
+	</body>
 </html>
