@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/profilepage.js"></script>
+  </head>
+
+  <body text="white">
+    <h1>Profile Page</h1>
+
+    <!-- NOTE: Menu & Back Buttons moved outside of body -->
+    <div id="main">
+      <!-- <button class="openbtn" onclick="openNav()">☰ Menu</button> -->
+      <button class="openbtn" onclick="goBack()">Go Back</button>
+    </div>
+    <!-- <button id="readButton">Return to Search!</button> -->
+
+    <hr/>
+    <h3>Account Information</h3>
+
+    <div class="profileOption">
+      Name: <input id="nameBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      Email: <input id="emailBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      City: <input id="cityBox" type="text" size="20"/>
+    </div>
+
+    <p>Genre Preference:</p>
+    <select id="Genres">
+      <option value="Trap">Trap</option>
+      <option value="Country">Country</option>
+      <option value="Electronic">Electronic</option>
+    </select>
+
+    <hr/>
+
+    <h3>Social Media Handles</h3>
+
+    <div class="profileOption">
+      Instagram: <input id="instaBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      Twitter: <input id="twitterBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      SoundCloud: <input id="soundcloudBox" type="text" size="20"/>
+    </div>
+
+    <form action="search.html">
+      <!-- <div> -->
+        <button onclick="myFunction()"id="addProfile" action="search.html">Add to Profile</button>
+      <!-- </div> -->
+    </form>
+  </body>
+
+  <script>
+    function goBack() {
+      window.history.back()
+    }
+  </script>
+</html>
