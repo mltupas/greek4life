@@ -1,7 +1,7 @@
-let profileDatabase = [];
+let profileDatabase = {};
 
 function myFunction() {
-  console.log('hello');
+  console.log('about to create new profile');
   const profileName = $('#nameBox').val();
   const profileEmail = $('#emailBox').val();
   const profileCity = $('#cityBox').val();
@@ -10,7 +10,6 @@ function myFunction() {
   const profileSoundcloud = $('#soundcloudBox').val();
   const profileGenre = document.getElementById('Genres');
   const genreText = profileGenre.value;
-
 
   const profileInfo = {
     name : profileName,
@@ -23,10 +22,6 @@ function myFunction() {
     connections : []
   }
 
-  const newProfile = {
-    [profileName] : profileInfo
-  }
-
-  profileDatabase.push(newProfile);
+  profileDatabase[profileName] = profileInfo;
   alert("Profile Information Added!");
 }
