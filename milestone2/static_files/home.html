@@ -83,10 +83,15 @@
 </script>
 </head>
 
+<div id="main">
+      <!--<button class="openbtn" onclick="openNav()">☰ Menu</button>-->
+      <button class="openbtn" onclick="goBack()">Go Back</button>
+ </div>
+
 <body text="white">
 	<h1>Search For Artists</h1>
-	
-	<p id='searchText'> Search by City in California: <p> 
+
+	<p id='searchText'> Search by City in California: <p>
 	<input id="locationBox" type="text" size="20" />
 	<button id="readButton">Search</button>
 
@@ -98,5 +103,11 @@
 
 	<script src="../server.js"></script>
 </body>
+
+<script>
+function goBack() {
+  window.history.back()
+}
+</script>
 
 </html>
