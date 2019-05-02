@@ -1,88 +1,76 @@
 <!DOCTYPE html>
 <html>
+	<head>
+	  	<meta charset="utf-8">
+	  	<title></title>
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="./css/style.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(() => {
+				$('#readButton').click(() => {
+					const requestURL = 'location/' + $('#locationBox').val();
+					console.log('making ajax request to:', requestURL);
 
-<head>
-  	<meta charset="utf-8">
-  	<title></title>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="./css/style.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script type="text/javascript">
+					$.ajax({
+						url: requestURL,
+						type: 'GET',
+						dataType: 'json',
+						success: (data) => {
+							console.log('You received some data!', data);
 
-	$(document).ready(() => {
-		$('#readButton').click(() => {
-			const requestURL = 'location/' + $('#locationBox').val();
-			console.log('making ajax request to:', requestURL);
+							if (data && data.name) {
+								console.log('Successfully fetched data at URL: ' + requestURL);
+								$('#artistName').html('Artist: ' + data.name);
+								$('#artistGenre').html('Artist Genre: ' + data.genre);
+								$('#artistSong').html('Sample Song: ' + data.song);
+								$('#artistImage').attr('src', data.albumCover).attr('max-width', '100%');
+								$('#connectArtistButton').html('<button id="addButton">Connect with Artist</button>');
+							} else {
+								console.log('Error: could not find item at URL: ' + requestURL);
+								$('#artistName').html('Error: city not found. Please try one of the following cities: La Jolla, Los Angeles, Irvine, Riverside, Fresno, San Diego');
+								$('#artistGenre').html('');
+								$('#artistSong').html('');
+								$('#artistImage').attr('src', '').attr('width', '0px');
+								$('#connectArtistButton').html('');
+							}
+						},
+					});
+				});
 
-			$.ajax({
-				url: requestURL,
-				type: 'GET',
-				dataType: 'json',
-				success: (data) => {
-					console.log('You received some data!', data);
+				$('#connectArtistButton').click(() => {
+					console.log('adding new connection');
+					const artistName = $('#artistName').text().substring(8);
+					const artistGenre = $('#artistGenre').text().substring(14);
+					const artistSong = $('#artistSong').text().substring(13);
+					const artistImage = $('#artistImage').text();
 
-					if (data && data.name) {
-						console.log('Successfully fetched data at URL: ' + requestURL);
-						$('#artistName').html('Artist: ' + data.name);
-						$('#artistGenre').html('Artist Genre: ' + data.genre);
-						$('#artistSong').html('Sample Song: ' + data.song);
-						$('#artistImage').attr('src', data.albumCover);
-						$('#connectArtistButton').html('<button id="addButton">Connect with Artist</button>');
+					if (profileDatabase.hasOwnProperty(artistName)) {
+						alert("Error: Artist is already your connection. Please connect with another artist.");
 					} else {
-						console.log('Error: could not find item at URL: ' + requestURL);
-						$('#artistName').html('Error: city not found. Please try one of the following cities: La Jolla, Los Angeles, Irvine, Riverside, Fresno, San Diego');
-						$('#artistGenre').html('');
-						$('#artistSong').html('');
-						$('#artistImage').attr('src', '').attr('width', '0px');
-						$('#connectArtistButton').html('');
+						const newConnection = {name: artistName, genre: artistGenre, song: artistSong, albumCover: artistImage};
+						profileDatabase[artistName] = newConnection;
+						alert("New Connection Added!");
 					}
-				},
+				});
+
+				$(document).ajaxError(() => {
+					$('#status').html('Error: unknown ajaxError!');
+				});
 			});
-		});
+		</script>
+	</head>
 
-		$('#connectArtistButton').click(() => {
-			console.log('adding new connection');
-
-			const artistName = $('#artistName').text().substring(8);
-			const artistGenre = $('#artistGenre').text().substring(14);
-			const artistSong = $('#artistSong').text().substring(13);
-			const artistImage = $('#artistImage').text();
-
-			console.log(artistName);
-			console.log([artistName]);
-
-			if (!([artistName] in profileDatabase)) {
-				const newConnection = {
-					[artistName]: {name: artistName, genre: artistGenre, song: artistSong, albumCover: artistImage}
-				}
-				profileDatabase.push(newConnection);
-				alert("New Connection Added!");
-			} else {
-				alert("Error: Artist is already your connection. Please connect with another artist.");				
-			}
-		});
-
-		$(document).ajaxError(() => {
-			$('#status').html('Error: unknown ajaxError!');
-		});
-	});
-</script>
-</head>
-
-<body text="white">
-	<h1>Search For Artists</h1>
-	
-	<p id='searchText'> Search by City in California: <p> 
-	<input id="locationBox" type="text" size="20" />
-	<button id="readButton">Search</button>
-
-	<div id="artistName"></div>
-	<div id="artistGenre"></div>
-	<div id="artistSong"></div>
-	<div id="artistImage"></div>
-	<div id="connectArtistButton"></div>
-
-	<script src="js/profilepage.js"></script>
-</body>
-
+	<body text="white">
+		<h1>Search For Artists</h1>
+		<p id='searchText'>Search by City in California:</p> 
+		<input id="locationBox" type="text" size="20" />
+		<button id="readButton">Search</button>
+		<div id="artistName"></div>
+		<div id="artistGenre"></div>
+		<div id="artistSong"></div>
+		<div id="artistImage"></div>
+		<div id="connectArtistButton"></div>
+		<script src="js/profilepage.js"></script>
+	</body>
 </html>
