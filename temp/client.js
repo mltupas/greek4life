@@ -331,7 +331,9 @@ function getRecommendations() {
   // });
 
   // requestURL = '/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token; // WORKING with genres
-  requestURL = '/recommendations?' + $.param(audioFeatures) + '&token=' + _token; // NOT WORKING without genres
+  console.log('targetTempo: ' + $('#targetTempo').val());
+  requestURL = '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token; // NOT WORKING without genres
+  console.log('requestURL: ' + requestURL);
 
 
   $.ajax({
@@ -344,7 +346,7 @@ function getRecommendations() {
       $('#tracks').empty();
         let trackIds = [];
         let trackUris = [];
-        if(data.tracks) {
+        if(data.tracks && $('#targetTempo').val()) {
           if(data.tracks.length > 0) {
             data.tracks.forEach(function(track) {
               trackIds.push(track.id);
@@ -356,8 +358,11 @@ function getRecommendations() {
           } else {
             $('#tracks').append('<h2>No results. Try a broader search.</h2>')
           }
+        } else if (!data.tracks) {
+          $('#tracks').append('<h2>No results. Please enter genres first.</h2>')  
         } else {
-          $('#tracks').append('<h2>No results. Select some genres first.</h2>')
+          // $('#tracks').append('<h2>No results. Select some genres first.</h2>')
+          $('#tracks').append('<h2>No results. Please enter a BPM value first.</h2>')
         }
     },
   });
