@@ -201,80 +201,82 @@ function getGenresList() {
 function getSliderValues() {
   let values = {};
   
-  let min_valence = $('#valence-slider').slider('values', 0);
-  let max_valence = $('#valence-slider').slider('values', 1);
-  let min_energy = $('#energy-slider').slider('values', 0);
-  let max_energy = $('#energy-slider').slider('values', 1);
-  let min_acousticness = $('#acousticness-slider').slider('values', 0);
-  let max_acousticness = $('#acousticness-slider').slider('values', 1);
-  let min_danceability = $('#danceability-slider').slider('values', 0);
-  let max_danceability = $('#danceability-slider').slider('values', 1);
-  let min_instrumentalness = $('#instrumentalness-slider').slider('values', 0);
-  let max_instrumentalness = $('#instrumentalness-slider').slider('values', 1);
-  let min_liveness = $('#liveness-slider').slider('values', 0);
-  let max_liveness = $('#liveness-slider').slider('values', 1);
-  let min_speechiness = $('#speechiness-slider').slider('values', 0);
-  let max_speechiness = $('#speechiness-slider').slider('values', 1);
-  let min_popularity = $('#popularity-slider').slider('values', 0);
-  let max_popularity = $('#popularity-slider').slider('values', 1);
+  // let min_valence = $('#valence-slider').slider('values', 0);
+  // let max_valence = $('#valence-slider').slider('values', 1);
+  // let min_energy = $('#energy-slider').slider('values', 0);
+  // let max_energy = $('#energy-slider').slider('values', 1);
+  // let min_acousticness = $('#acousticness-slider').slider('values', 0);
+  // let max_acousticness = $('#acousticness-slider').slider('values', 1);
+  // let min_danceability = $('#danceability-slider').slider('values', 0);
+  // let max_danceability = $('#danceability-slider').slider('values', 1);
+  // let min_instrumentalness = $('#instrumentalness-slider').slider('values', 0);
+  // let max_instrumentalness = $('#instrumentalness-slider').slider('values', 1);
+  // let min_liveness = $('#liveness-slider').slider('values', 0);
+  // let max_liveness = $('#liveness-slider').slider('values', 1);
+  // let min_speechiness = $('#speechiness-slider').slider('values', 0);
+  // let max_speechiness = $('#speechiness-slider').slider('values', 1);
+  // let min_popularity = $('#popularity-slider').slider('values', 0);
+  // let max_popularity = $('#popularity-slider').slider('values', 1);
   let min_tempo = $('#tempo-slider').slider('values', 0);
   let max_tempo = $('#tempo-slider').slider('values', 1);
+
+  // let tempo = // value that user inputs in the text box
   
-  if($('#mode-minor').is(':checked') && !$('#mode-major').is(':checked')) {
-    values["target_mode"] = 0;
-  }
-  if($('#mode-major').is(':checked') && !$('#mode-minor').is(':checked')) {
-    values["target_mode"] = 1;
-  }
+  // if($('#mode-minor').is(':checked') && !$('#mode-major').is(':checked')) {
+  //   values["target_mode"] = 0;
+  // }
+  // if($('#mode-major').is(':checked') && !$('#mode-minor').is(':checked')) {
+  //   values["target_mode"] = 1;
+  // }
   
-  if(min_valence > 0) {
-    values["min_valence"] = min_valence;
-  }
-  if(max_valence < 1) {
-    values["max_valence"] = max_valence;
-  }
-  if(min_energy > 0) {
-    values["min_energy"] = min_energy;
-  }
-  if(max_energy < 1) {
-    values["max_energy"] = max_energy;
-  }
-  if(min_acousticness > 0) {
-    values["min_acousticness"] = min_acousticness;
-  }
-  if(max_acousticness < 1) {
-    values["max_acousticness"] = max_acousticness;
-  }
-  if(min_danceability > 0) {
-    values["min_danceability"] = min_danceability;
-  }
-  if(max_danceability < 1) {
-    values["max_danceability"] = max_danceability;
-  }
-  if(min_instrumentalness > 0) {
-    values["min_instrumentalness"] = min_instrumentalness;
-  }
-  if(max_instrumentalness < 1) {
-    values["max_instrumentalness"] = max_instrumentalness;
-  }
-  if(min_liveness > 0) {
-    values["min_liveness"] = min_liveness;
-  }
-  if(max_liveness < 1) {
-    values["max_liveness"] = max_liveness;
-  }
-  if(min_speechiness > 0) {
-    values["min_speechiness"] = min_speechiness;
-  }
-  if(max_speechiness < 1) {
-    values["max_speechiness"] = max_speechiness;
-  }
-  if(min_popularity > 0) {
-    values["min_popularity"] = min_popularity;
-  }
-  if(max_popularity < 100) {
-    values["max_popularity"] = max_popularity;
-  }
+  // if(min_valence > 0) {
+  //   values["min_valence"] = min_valence;
+  // }
+  // if(max_valence < 1) {
+  //   values["max_valence"] = max_valence;
+  // }
+  // if(min_energy > 0) {
+  //   values["min_energy"] = min_energy;
+  // }
+  // if(max_energy < 1) {
+  //   values["max_energy"] = max_energy;
+  // }
+  // if(min_acousticness > 0) {
+  //   values["min_acousticness"] = min_acousticness;
+  // }
+  // if(max_acousticness < 1) {
+  //   values["max_acousticness"] = max_acousticness;
+  // }
+  // if(min_danceability > 0) {
+  //   values["min_danceability"] = min_danceability;
+  // }
+  // if(max_danceability < 1) {
+  //   values["max_danceability"] = max_danceability;
+  // }
+  // if(min_instrumentalness > 0) {
+  //   values["min_instrumentalness"] = min_instrumentalness;
+  // }
+  // if(max_instrumentalness < 1) {
+  //   values["max_instrumentalness"] = max_instrumentalness;
+  // }
+  // if(min_liveness > 0) {
+  //   values["min_liveness"] = min_liveness;
+  // }
+  // if(max_liveness < 1) {
+  //   values["max_liveness"] = max_liveness;
+  // }
+  // if(min_speechiness > 0) {
+  //   values["min_speechiness"] = min_speechiness;
+  // }
+  // if(max_speechiness < 1) {
+  //   values["max_speechiness"] = max_speechiness;
+  // }
+  // if(min_popularity > 0) {
+  //   values["min_popularity"] = min_popularity;
+  // }
+  // if(max_popularity < 100) {
+  //   values["max_popularity"] = max_popularity;
+  // }
   if(min_tempo > 40) {
     values["min_tempo"] = min_tempo;
   }
@@ -282,6 +284,10 @@ function getSliderValues() {
     values["max_tempo"] = max_tempo;
   }
   
+  // if (tempo <= 40 && tempo >= 200) {
+  //   alert('Error: incorrect bpm value. Please enter a correct value between 40 and 200.');
+  // }
+
   return values;
 }
 
@@ -301,27 +307,57 @@ function getRecommendations() {
   localStorage.setItem('currentNelsonFeatures', JSON.stringify(audioFeatures));
   
   // Send the request
-  $.get('/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
-    $('#tracks').empty();
-    let trackIds = [];
-    let trackUris = [];
-    if(data.tracks) {
-      if(data.tracks.length > 0) {
-        data.tracks.forEach(function(track) {
-          trackIds.push(track.id);
-          trackUris.push(track.uri);
-        });
-        localStorage.setItem('currentNelsonTracks', trackUris.join());
-        renderTracks(trackIds);
-        play(trackUris.join());
-      }
-      else {
-        $('#tracks').append('<h2>No results. Try a broader search.</h2>')
-      }
-    }
-    else {
-      $('#tracks').append('<h2>No results. Select some genres first.</h2>')
-    }
+  // $.get('/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token, function(data) {
+  //   $('#tracks').empty();
+  //   let trackIds = [];
+  //   let trackUris = [];
+  //   if(data.tracks) {
+  //     if(data.tracks.length > 0) {
+  //       data.tracks.forEach(function(track) {
+  //         trackIds.push(track.id);
+  //         trackUris.push(track.uri);
+  //       });
+  //       localStorage.setItem('currentNelsonTracks', trackUris.join());
+  //       renderTracks(trackIds);
+  //       play(trackUris.join());
+  //     }
+  //     else {
+  //       $('#tracks').append('<h2>No results. Try a broader search.</h2>')
+  //     }
+  //   }
+  //   else {
+  //     $('#tracks').append('<h2>No results. Select some genres first.</h2>')
+  //   }
+  // });
+
+  requestURL = '/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token;
+
+  $.ajax({
+    url: requestURL,
+    type: 'GET',
+    dataType: 'json',
+    success: (data) => {
+      console.log('You received some data!', data);
+
+      $('#tracks').empty();
+        let trackIds = [];
+        let trackUris = [];
+        if(data.tracks) {
+          if(data.tracks.length > 0) {
+            data.tracks.forEach(function(track) {
+              trackIds.push(track.id);
+              trackUris.push(track.uri);
+            });
+            localStorage.setItem('currentNelsonTracks', trackUris.join());
+            renderTracks(trackIds);
+            play(trackUris.join());
+          } else {
+            $('#tracks').append('<h2>No results. Try a broader search.</h2>')
+          }
+        } else {
+          $('#tracks').append('<h2>No results. Select some genres first.</h2>')
+        }
+    },
   });
 }
 
