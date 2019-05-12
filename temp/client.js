@@ -331,7 +331,6 @@ function getRecommendations() {
   // });
 
   // requestURL = '/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token; // WORKING with genres
-  console.log('targetTempo: ' + $('#targetTempo').val());
   requestURL = '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token; // NOT WORKING without genres
   console.log('requestURL: ' + requestURL);
 
@@ -342,11 +341,15 @@ function getRecommendations() {
     dataType: 'json',
     success: (data) => {
       console.log('You received some data!', data);
+      const currentGenres = document.getElementById('current-genres');
+      const targetTempo = document.getElementById('targetTempo');
+      console.log('targetTempo: ' + targetTempo.value);
+      console.log('currentGenres: ' + currentGenres.value);
 
       $('#tracks').empty();
         let trackIds = [];
         let trackUris = [];
-        if(data.tracks && $('#targetTempo').val()) {
+        if(data.tracks && targetTempo.value !== '') {
           if(data.tracks.length > 0) {
             data.tracks.forEach(function(track) {
               trackIds.push(track.id);
@@ -358,10 +361,9 @@ function getRecommendations() {
           } else {
             $('#tracks').append('<h2>No results. Try a broader search.</h2>')
           }
-        } else if (!data.tracks) {
+        } else if (currentGenres.value == null && targetTempo.value !== '') {
           $('#tracks').append('<h2>No results. Please enter genres first.</h2>')  
         } else {
-          // $('#tracks').append('<h2>No results. Select some genres first.</h2>')
           $('#tracks').append('<h2>No results. Please enter a BPM value first.</h2>')
         }
     },
