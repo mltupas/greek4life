@@ -136,3 +136,8 @@ text{
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+#backbutton {
+  margin-left:0;
+  margin-right:auto;
+}
