@@ -330,7 +330,9 @@ function getRecommendations() {
   //   }
   // });
 
-  requestURL = '/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token;
+  // requestURL = '/recommendations?seed_genres=' + genresString + '&' + $.param(audioFeatures) + '&token=' + _token; // WORKING with genres
+  requestURL = '/recommendations?' + $.param(audioFeatures) + '&token=' + _token; // NOT WORKING without genres
+
 
   $.ajax({
     url: requestURL,
