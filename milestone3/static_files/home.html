@@ -10,26 +10,16 @@
 
 </head>
 
-<button id="backbutton" onclick="goBack()">Go Back</button>
+<body background="dj.png">
 
-<body>
 	<h1>MusicMaster</h1>
-
-	<div class="container">
-    <button class="homeOptions" id="tempokeyButton" onclick="window.location.href = 'bpm.html';" >Beats Per Minute</button>
-  </div>
-
-	<div class="container">
-    <button class="homeOptions" id="songButton" onclick="window.location.href = 'analyze.html';">Song Title</button>
+	<div class="container" id="homebuttons">
+    <button class="homeOptions" id="tempokeyButton" onclick="window.location.href = 'bpm.html';" >Search by Beat Per Minute!</button>
+    <!-- <img src="vinyl.png"  -->
+    <button class="homeOptions" id="songButton" onclick="window.location.href = 'analyze.html';">Analyze your song!</button>
   </div>
 
     <script src="js/bootstrap.min.js"></script>
 </body>
-
-<script>
-function goBack() {
-  window.history.back()
-}
-</script>
 
 </html>
