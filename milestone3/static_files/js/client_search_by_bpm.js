@@ -1,4 +1,4 @@
-const hash = window.location.hash
+const window_hash = window.location.hash
 .substring(1)
 .split('&')
 .reduce(function (initial, item) {
@@ -10,7 +10,7 @@ const hash = window.location.hash
 }, {});
 window.location.hash = '';
 
-let _token = hash.access_token;
+let _token = window_hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Our app's client ID, redirect URI and desired scopes
@@ -177,18 +177,8 @@ function renderTracks(ids) {
   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
     tracks.forEach(function(track) {
       let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-      let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="album-art" src="' + image + '"/><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><img class="remove-icon" src="https://cdn.glitch.com/9641d2b3-59eb-408e-ab02-0b9bbd49b069%2Fremove-icon.png?1508341583541" onclick="remove(\'' + track.uri + '\');"/></div>';
+      let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="album-art" src="' + image + '"/><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div></div>';
       $('#tracks').append(trackElement);
     })
   });
-}
-
-function remove(track) {
-  let trackList = localStorage.getItem('currentTracks').split(',');
-  trackList = trackList.filter(item => item != track);
-  localStorage.setItem('currentTracks', trackList.join());
-  let elementId = '#' + track;
-  let element = document.getElementById(track);
-  element.outerHTML = "";
-  delete element;
 }
