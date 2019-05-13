@@ -61,8 +61,7 @@ function getGenresList() {
 }
 
 function findSongID() {
-  requestURL = '/search?q=abba&type=track&market=US&limit=1';
-  '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token;
+  requestURL = '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token;
   console.log('requestURL: ' + requestURL);
 
   $.ajax({

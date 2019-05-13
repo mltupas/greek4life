@@ -1,4 +1,4 @@
-const hash = window.location.hash
+  const hash = window.location.hash
 .substring(1)
 .split('&')
 .reduce(function (initial, item) {
@@ -70,6 +70,7 @@ function findSongID() {
     dataType: 'json',
     success: (data) => {
       console.log('You received some data!', data);
+      console.log('Song ID: ', data["tracks"]["items"]["0"]["id"]);
       const songName = document.getElementById('songName');
       console.log('songName: ' + songName.value);
 
