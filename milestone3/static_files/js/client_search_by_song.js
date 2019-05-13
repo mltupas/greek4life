@@ -70,34 +70,35 @@ function findSongID() {
     dataType: 'json',
     success: (data) => {
       console.log('You received some data!', data);
-      console.log('Song ID: ', data["tracks"]["items"]["0"]["id"]);
-      const songName = document.getElementById('songName');
-      console.log('songName: ' + songName.value);
+      if (data["tracks"]["items"].length > 0) {
+        const songID = data["tracks"]["items"]["0"]["id"];
+        console.log('Song ID: ', songID);
+        const songName = document.getElementById('songName');
+        console.log('songName: ' + songName.value);
 
-      // $('#tracks').empty();
-      // let trackIds = [];
-      // let trackUris = [];
-      // if(data.tracks && (currentGenres[0].innerHTML !== '') && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
-      //   if(data.tracks.length > 0) {
-      //     data.tracks.forEach(function(track) {
-      //       trackIds.push(track.id);
-      //       trackUris.push(track.uri);
-      //     });
-      //     localStorage.setItem('currentTracks', trackUris.join());
-      //     renderTracks(trackIds);
-      //   } else {
-      //     $('#tracks').append('<h2>No results. Try a broader search.</h2>')
-      //   }
-      // } else if (currentGenres[0].innerHTML === '' && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
-      //   $('#tracks').append('<h2>No results. Please enter genres first.</h2>')
-      // } else if (targetTempo.value !== '' && (targetTempo.value < 40 || targetTempo.value > 200)) {
-      //   $('#tracks').append('<h2>No results. Please enter a valid BPM value first.</h2>')
-      // } else {
-      //   $('#tracks').append('<h2>No results. Please enter a BPM value first.</h2>')
-      // }
+        findSongTempo(songID);
+      } else {
+        $('#tracks').empty();
+        $('#tracks').append('<h2>No results. Please enter another song name first.</h2>')
+      }
     },
   });
 }
+
+function findSongTempo(songID) {
+  requestURL = '/audio-analysis/' + songID + '&token=' + _token;
+  console.log('requestURL: ' + requestURL);
+
+  $.ajax({
+    url: requestURL,
+    type: 'GET',
+    dataType: 'json',
+    success: (data) => {
+      console.log('You received some data!', data);
+    },
+  });
+}
+
 
 function updateGenres() {
   // Get selected genres
