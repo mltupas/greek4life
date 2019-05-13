@@ -32,8 +32,7 @@ app.get('/audio-analysis', function(req, res) {
   let token = req.query.token;
   delete req.query.token;
 
-  console.log('in /audio-analysis')
-  console.log('req.query: ' + req.query);
+  console.log('in /audio-analysis');
 
   let requestURL = spotifyBaseUrl + 'audio-analysis/' + 
   querystring.stringify(req.query);
@@ -57,8 +56,7 @@ app.get('/search', function(req, res) {
   let token = req.query.token;
   delete req.query.token;
 
-  console.log('in /search')
-  console.log('req.query: ' + req.query.text);
+  console.log('in /search');
 
   let requestURL = spotifyBaseUrl + 'search?' + 
   querystring.stringify({
