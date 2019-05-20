@@ -15,7 +15,7 @@ This page has improved in this way...
 
 This page has improved in this way...
 
-# Non-Trivial Actions
+# User Actions
 
 ### Song Playback
 
