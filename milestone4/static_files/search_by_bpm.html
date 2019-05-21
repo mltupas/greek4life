@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>MusicMaster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/search_pages.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
+  </head>
+
+  <button id="backbutton" onclick="goBack()">Go Back</button>
+
+  <body>
+    <div class="info">
+      <div id="notice"></div>
+      <div class="body">
+        <div class="inline space-after" id='genres'>
+          <h3>Current genres: <span id="current-genres"></span></h3>
+          <button class="btn btn-aubergine btn-sm" id="choose-genres-button" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+        </div>
+
+        <div>
+          <h5>Mode</h5>
+          <h5>BPM (40-200 bpm)</h5>
+          <input id="targetTempo" type="text" size="20" />
+          <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="getRecommendations();">Search</button>
+        </div>
+      </div>
+      <div id="tracks">
+        <h4>Select Genres and BPM to get recommendations</h4>
+        <!-- Tracks to be appended here -->
+      </div>
+    </div>
+
+    <div class="modal fade" id="genre-select">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-title">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="select-genres-title">Select your genres</h4>
+          </div>
+          <div class="modal-body">
+            <div id="genreLimitAlert" class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              Oops! You can only select up to 5 genres.
+            </div>
+            <div id="genres-list" data-toggle="buttons">
+              <label class="btn btn-salmon btn-sm">
+                <!-- Buttons for each genre to be appended here -->
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-aubergine" id="select-genres-button" data-dismiss="modal" onclick="updateGenres();">Select Genres</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="device-select">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Select a device</h4>
+          </div>
+          <div class="modal-body">
+            <div id="devices-list">
+              <!-- Buttons for each device to be appended here -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-aubergine" data-dismiss="modal">All done!</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="js/client_search_by_bpm.js"></script>
+  </body>
+
+  <script>
+    function goBack() {
+      window.history.back()
+    }
+
+
+  $('#saveButton').click(() => {
+    console.log('hello!');
+  });
+
+
+  </script>
+</html>

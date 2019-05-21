@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Profile Page</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="jquery-3.3.1.min.js"></script>
+<script src="js/profilepage.js"></script>
+<!-- <script src="../server.js"></script> -->
+
+</head>
+<body text="white">
+  <h1> Profile Page</h1>
+
+  <button id="readButton">Return to Search!</button>
+  <!-- <button id="allUsersButton">Get all usernames</button> -->
+
+    <hr/>
+<h3> Account Information</h3>
+
+    <div class="profileOption">
+      Name: <input class="textBox" id="nameBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      Email: <input class="textBox" id="emailBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      City: <input class="textBox" id="cityBox" type="text" size="20"/>
+    </div>
+    <p> Genre Preference:</p>
+    <select id="Genres">
+       <option class="textBox" value="Trap">Trap</option>
+       <option class="textBox" value="Country">Country</option>
+       <option class="textBox" value="Electronic">Electronic</option>
+    </select>
+
+    <!-- <div class="dropdown">
+     <button onclick="myFunction()" class="dropbtn">Genre</button>
+    <div id="myDropdown" class="dropdown-content">
+       <a href="#">Trap</a>
+       <a href="#">Country</a>
+       <a href="#">Electronic</a>
+    </div>
+    </div> -->
+
+  <hr/>
+    <h3> Social Media Handles</h3>
+
+    <div class="profileOption">
+      Instagram: <input id="instaBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      Twitter: <input id="twitterBox" type="text" size="20"/>
+    </div>
+    <div class="profileOption">
+      SoundCloud: <input id="soundcloudBox" type="text" size="20"/>
+    </div>
+
+   <div >
+     <button onclick="myFunction()"id="addProfile">Add to Profile</button>
+   </div>
+
+
+</body>
+</html>

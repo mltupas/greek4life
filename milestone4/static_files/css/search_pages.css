@@ -1,0 +1,162 @@
+body {
+  font-family: Times;
+  background-color: #182B49;
+}
+
+h2, h3, h4, h5 {
+    color: white;
+}
+
+#backbutton {
+  margin-left:0;
+  margin-right:auto;
+  background-color: #005e94;
+  color: #ffcf00;
+  padding: 14px 20px;
+  margin:  0 auto;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  display: block;
+}
+
+#choose-genres-button, #search-button, #select-genres-button, #genre-button, #saveButton {
+  background-color: #005e94;
+  color: #ffcf00;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+#choose-genres-button:hover, #search-button:hover, #select-genres-button:hover, #genre-button:hover {
+  opacity: 0.8;
+}
+
+#genre-button:active, #genre-button.active, .open > .dropdown-toggle#genre-button, #genre-button:active:hover, #genre-button.active:hover, .open > .dropdown-toggle#genre-button:hover {
+    background-color: #182B49;
+    box-shadow: none;
+}
+
+#track-name, #select-genres-title {
+  color: #ffcf00;
+}
+
+#artist-name {
+  color: white;
+}
+
+#modal-title {
+  background-color: #182B49;
+  width: 100.02%;
+}
+
+h3 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.spacer {
+  margin-right: 15px;
+}
+
+.space-after {
+  margin-bottom: 15px;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+.ui-widget-header {
+  background: #503750;
+  border: none;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:active {
+  border: 2px solid #503750;
+  background: #f573a0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1.2em;
+}
+
+.ui-widget.ui-widget-content {
+  border: 1px solid #503750;
+}
+
+#notice {
+  width: 80%;
+}
+
+.info {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.info .body {
+  width: 80%;
+  padding: 30px;
+}
+
+#current-user, #current-playback {
+  color: #f573a0;
+  margin-right: 20px;
+}
+
+.modal-dialog {
+  width: 80%;
+}
+
+#genres-list {
+  text-align: center;
+}
+
+#genres-list .btn {
+  margin: 5px;
+}
+
+#tracks {
+  width: 80%;
+  height: 30%;
+  overflow-y: scroll;
+  padding: 10px;
+  display: list-item;
+  flex-wrap: wrap;
+  -webkit-column-count: 2;
+}
+
+.track-element {
+  display: flex;
+  padding: inherit;
+}
+
+.track-element > div {
+  display: inherit;
+}
+
+.current-track {
+  background-color: #f573a0;
+}
+
+.current-track a {
+  color: white;
+}
+
+.album-art {
+  width: 150;
+  height: 150;
+  margin: 0 20px;
+}
+/* Rauls edit starts here! */
+#saveButton{
+  width: inherit;
+  height: 30px;
+  padding: inherit;
+  margin-left: 24px;
+}
+#saveButton:hover{
+  background-color: buttonface;
+}

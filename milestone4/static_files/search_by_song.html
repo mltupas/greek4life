@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>MusicMaster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/search_pages.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
+  </head>
+
+  <button id="backbutton" onclick="goBack()">Go Back</button>
+
+  <body>
+    <div class="info">
+      <div id="notice"></div>
+      <div class="body">        
+        <div>
+          <h3>Song</h3>
+          <input id="songName" type="text" size="20" />
+          <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="findSongID();">Search</button>
+        </div>
+      </div>
+      <h4 id="songTempo">Enter song name to get its BPM and recommendations</h4>
+      <div id="tracks">
+        <!-- Tracks to be appended here -->
+      </div>
+    </div>
+    <script src="js/client_search_by_song.js"></script>
+  </body>
+
+  <script>
+    function goBack() {
+      window.history.back()
+    }
+  </script>
+</html>
