@@ -209,15 +209,18 @@ function renderTracks(ids) {
 }
 
 function saveSong(track) {
+  const savedSongsList = localStorage.getItem('savedSongs') ? localStorage.getItem('savedSongs').split(',') : [];
+  console.log('savedSongs before addition: ' + savedSongsList);
+  console.log(typeof savedSongsList);
   console.log('track: ' + track);
+
+  let trackID = track.substring(14);
+  console.log('trackID: ' + trackID);
 
   let alreadySaved = false;
 
-  let savedSongsList = localStorage.getItem('savedSongs').split(',');
-  console.log('savedSongs before addition: ' + savedSongsList);
-
   for (index in savedSongsList) {
-    if (track == savedSongsList[index]) {
+    if (trackID == savedSongsList[index]) {
       alreadySaved = true;
     }
   }
@@ -225,12 +228,11 @@ function saveSong(track) {
   if (alreadySaved) {
     alert("This song has already been saved to your profile.");
   } else {
-    savedSongsList.push(track);
+    savedSongsList.push(trackID);
     alert("Song added to your profile!");
+    localStorage.setItem('savedSongs', savedSongsList);
   }
 
-  localStorage.setItem('savedSongs', savedSongsList);
-  savedSongsList = localStorage.getItem('savedSongs').split(',');
   console.log('savedSongs after addition: ' + savedSongsList);
 }
 
@@ -239,6 +241,7 @@ function hasClass(element, cls) {
 }
 
 function updateCurrentlyPlaying(track) {
+  console.log('in updateCurrentlyPlaying with this track: ' + track);
   let trackElement = document.getElementById(track);
   $('.track-element').removeClass('current-track');
   if(trackElement) {
@@ -247,7 +250,9 @@ function updateCurrentlyPlaying(track) {
 }
 
 function play(track) {
+  console.log('Current track playing: ' + track);
   if(playbackSetting != 0) {
+    console.log('play requestURL: ' + '/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
     $.post('/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
   }
 }
@@ -261,7 +266,7 @@ function remove(track) {
   trackList = trackList.filter(item => item != track);
   localStorage.setItem('currentTracks', trackList.join());
   let elementId = '#' + track;
-  var element = document.getElementById(track);
+  let element = document.getElementById(track);
   element.outerHTML = "";
   delete element;
   alert("This song has been removed from the list of recommendations.");
