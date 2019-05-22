@@ -4,35 +4,20 @@ body {
 }
 
 h2, h3, h4, h5 {
-  color: white;
-}
-
-h4 {
-  text-align: center;
-}
-
-#main {
-  float: left;
+    color: white;
 }
 
 #backbutton {
-  margin-left:0;
-  margin-right:auto;
   background-color: #005e94;
   color: #ffcf00;
   padding: 14px 20px;
-  margin: 10px 10px;
-/*  
+  margin: 8px 0;
   border: none;
   cursor: pointer;
-/*  
-  width: 30%;
-*/  
-  display: block;
-  border: none;
+  float:right;
 }
 
-#choose-genres-button, #search-button, #select-genres-button, #genre-button {
+#choose-genres-button, #search-button, #select-genres-button, #genre-button, #saveButton {
   background-color: #005e94;
   color: #ffcf00;
   padding: 14px 20px;
@@ -41,7 +26,7 @@ h4 {
   cursor: pointer;
 }
 
-#choose-genres-button:hover, #search-button:hover, #select-genres-button:hover, #genre-button:hover, #saveButton:hover, #backbutton:hover, #play-button:hover {
+#choose-genres-button:hover, #search-button:hover, #select-genres-button:hover, #genre-button:hover {
   opacity: 0.8;
 }
 
@@ -105,11 +90,11 @@ h3 {
 .info {
   display: flex;
   flex-flow: column nowrap;
-  /*align-items: center;*/
+  align-items: center;
 }
 
 .info .body {
-  width: 80%;
+  width: max-content;
   padding: 30px;
 }
 
@@ -127,23 +112,22 @@ h3 {
 }
 
 #genres-list .btn {
-  margin: 5px;  
+  margin: 5px;
 }
 
 #tracks {
   width: 80%;
   height: 30%;
   overflow-y: scroll;
-/*  
-  padding: 20px;
-*/
+  padding: 10px;
+  display: list-item;
+  flex-wrap: wrap;
+  -webkit-column-count: 2;
 }
 
 .track-element {
   display: flex;
-  padding: 20px 0;
-  float: left;
-  width: 50%;
+  padding: inherit;
 }
 
 .track-element > div {
@@ -151,7 +135,7 @@ h3 {
 }
 
 .current-track {
-  background-color: #08562B;
+  background-color: #f573a0;
 }
 
 .current-track a {
@@ -159,33 +143,34 @@ h3 {
 }
 
 .album-art {
-  width: 100;
-  height: 100;
+  width: 150;
+  height: 150;
   margin: 0 20px;
 }
-
-.remove-icon {
-  width: 15px;
-  height: 15px;
-  align-self: center;
-/*  
-  margin: 1px 1px 1px 50px;
-*/
-}
-
 /* Rauls edit starts here! */
-#saveButton, #play-button {
-/*  
+#saveButton{
   width: inherit;
   height: 30px;
   padding: inherit;
   margin-left: 24px;
-*/
-  background-color: #005e94;
-  color: #ffcf00;
-  padding: 10px 20px;
-  margin: 8px 0 0 15px;
-  border: none;
-  cursor: pointer;
-  height: 30px;
+}
+#saveButton:hover{
+  background-color: buttonface;
+}
+
+#genres, #current-genres, #choose-genres-button, #search-button {
+  display: inline-block;
+  float:left;
+}
+
+ul li {
+  float: left;
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h1{
+  text-align: center;
+  position: absolute;
 }
