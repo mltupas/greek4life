@@ -28,6 +28,6 @@ The first non-trival feature we have chosen to implement in our application is t
 
 The second non-trivial action we have implemented in our application allows a user to save songs to their profile so that they can be accessed later. This can be achieved on either search page depending on whether the user chooses to search by song title or by beats per minute. Once the list of songs appears, a user can then save the song by clicking the *Save This Song!* button. Once songs are saved to a list of save songs, the user can navigate to the Saved Music page and see their list of saved songs displayed with the options to play a song and remove a song from the list.
 
-### Delete Songs to Profile
+### Delete Songs from Profile
 
 The third non-trivial action we have implemented in our application allows a user to delete songs either from their list of song recommendations in the search pages or their list of saved songs in the Saved Music page. If a user deletes a certain song from the list, then the rest of the songs will automatically move up the page so that there are no awkward gaps in the list of songs.
