@@ -29,35 +29,55 @@ if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token`;
 }
 
-genreLimitAlert("off");
+// Page setup
+let deviceId;
+let playbackSetting;
+setPlaybackSetting(1);
 
-function genreLimitAlert(state) {
-  if(state == "on") {
-    $('#genreLimitAlert').show();
-  } else {
-    $('#genreLimitAlert').hide();
+// Initialise Web Playback SDK
+function onSpotifyPlayerAPIReady() {
+  
+  let player = new Spotify.Player({
+    name: 'User',
+    getOAuthToken: function(cb) {
+      cb(_token)
+    },
+    volume: 0.8
+  });
+
+  player.on('ready', function(data) {
+    deviceId = data.device_id;
+    localStorage.setItem('browserDeviceID', data.device_id);
+  });
+
+  player.on('player_state_changed', function(data) {
+    if(data) {
+      let currentTrack = data.track_window.current_track.uri;
+      updateCurrentlyPlaying(currentTrack);
+    }  
+  });
+
+  player.connect();
+}
+
+function setPlaybackSetting(setting) {
+  playbackSetting = setting;
+  
+  if (setting == 0) {
+    deviceId = null;
+    pause();
+    $('#current-playback').text('None');
+    $('.track-element').removeClass('current-track');
+  } else if (setting == 1) {
+    setDevice(localStorage.getItem('browserDeviceID'));
+    $('#current-playback').text('In Browser');
   }
 }
 
-function getGenresList() {
-  $('#genres-list').empty();
-  $.get('/genres?token=' + _token, function(genres) {
-    genres.forEach(function(genre) {
-      let genreButtonElement = '<label class="btn btn-salmon btn-sm" id="genre-button"><input type="checkbox" value="' + genre + '">' + genre + '</label>';
-      $('#genres-list').append(genreButtonElement);
-    });
-  });
-  
-  $('#genres-list').on('change', 'input', function() {
-    if($('#genres-list input:checked').length > 5) {
-      $(this).parent().removeClass("active");
-      this.checked = false;
-      genreLimitAlert("on");
-    }
-    else {
-      genreLimitAlert("off");
-    }
-  });
+function setDevice(id, name) {
+  deviceId = id;
+  $('#current-playback').text(name);
+  $.post('/transfer?device_id=' + deviceId + '&token=' + _token);
 }
 
 function findSongID() {
@@ -75,8 +95,8 @@ function findSongID() {
         console.log('Song ID: ', songID);
         const songName = document.getElementById('songName');
         console.log('songName: ' + songName.value);
-        console.log(requestURL);
-        console.log(_token);
+        console.log('requestURL: ' + requestURL);
+        console.log('token: ' + _token);
         
         requestURL2 = 'https://api.spotify.com/v1/audio-features/' + songID; //get tempo of song
         $.ajax({
@@ -178,34 +198,71 @@ function getSimilarRecommendations(artistGenres, songTempo) {
   });
 }
 
-function updateGenres() {
-  // Get selected genres
-  let genres = [];
-  $('#genres-list input:checked').each(function() {
-    genres.push($(this).val());
-  });
-  let genresString = genres.join();
-  localStorage.setItem('currentGenres', genresString);
-  $('#current-genres').text(genresString);
-
-  const genresId = document.getElementById('genres');
-  const currentGenres = genresId.getElementsByTagName('span');
-  console.log('currentGenres: ' + currentGenres[0].innerHTML);
-
-  $('#tracks').empty();
-  if (targetTempo.value === '') {
-    $('#tracks').append('<h2>Please enter a BPM value. Then, click Search.</h2>')
-  } else if ((currentGenres[0].innerHTML !== '') && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
-    $('#tracks').append('<h2>Now, click Search.</h2>')
-  }
-}
-
 function renderTracks(ids) {
   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
     tracks.forEach(function(track) {
       let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-      let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="album-art" src="' + image + '"/><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div></div>';
+      let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="https://cdn.glitch.com/9641d2b3-59eb-408e-ab02-0b9bbd49b069%2Fremove-icon.png?1508341583541" onclick="remove(\'' + track.uri + '\');"/><img class="album-art" src="' + image + '"/><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><div id="track-buttons"><button type="button" onclick="saveSong(\'' + track.uri + '\');" class="btn btn-aubergine" id="saveButton" value="Save Song">Save Song</button><button type="button" onclick="play(\'' + track.uri + '\');" class="btn btn-aubergine" id="play-button" value="Play Song">Play Song</button></div></div>';
       $('#tracks').append(trackElement);
     })
   });
+}
+
+function saveSong(track) {
+  console.log('track: ' + track);
+
+  let alreadySaved = false;
+
+  let savedSongsList = localStorage.getItem('savedSongs').split(',');
+  console.log('savedSongs before addition: ' + savedSongsList);
+
+  for (index in savedSongsList) {
+    if (track == savedSongsList[index]) {
+      alreadySaved = true;
+    }
+  }
+
+  if (alreadySaved) {
+    alert("This song has already been saved to your profile.");
+  } else {
+    savedSongsList.push(track);
+    alert("Song added to your profile!");
+  }
+
+  localStorage.setItem('savedSongs', savedSongsList);
+  savedSongsList = localStorage.getItem('savedSongs').split(',');
+  console.log('savedSongs after addition: ' + savedSongsList);
+}
+
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
+function updateCurrentlyPlaying(track) {
+  let trackElement = document.getElementById(track);
+  $('.track-element').removeClass('current-track');
+  if(trackElement) {
+    trackElement.className += " current-track";
+  }
+}
+
+function play(track) {
+  if(playbackSetting != 0) {
+    $.post('/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token);
+  }
+}
+
+function pause() {
+  $.post('/pause?token=' + _token);
+}
+
+function remove(track) {
+  let trackList = localStorage.getItem('currentTracks').split(',');
+  trackList = trackList.filter(item => item != track);
+  localStorage.setItem('currentTracks', trackList.join());
+  let elementId = '#' + track;
+  var element = document.getElementById(track);
+  element.outerHTML = "";
+  delete element;
+  alert("This song has been removed from the list of recommendations.");
 }
