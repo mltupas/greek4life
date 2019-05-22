@@ -1,35 +1,23 @@
 <!DOCTYPE html>
-
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Login Page</title>
-		<meta name="author" content="">
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="./css/style.css" rel="stylesheet">
-	</head>
+  <head>
+    	<meta charset="utf-8">
+    	<title></title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link href="css/style.css" rel="stylesheet">
+  	<script src="https://code.jquery.com/jquery.js"></script>
 
-	<body>
+  </head>
 
-        <h1>Chef App</h1>
-        
-		<form name="login" onsubmit="return validate()" action="home.html" method="get">
-			<div class="login">
-				Email<input type="text" id="email" required/>
-				Password<input type="password" name="pswd" id="pswd" required/>
-				<button type="submit">Login</button>
+  <body background="images/dj.png">
 
-				<div class="links">
-					<a href="createaccount.html" id="createaccount">Create Account</a>
-					<a href="forgotpassword.html" id="forgotpassword">Forgot Password?</a>
-				</div>
-				<br>
-			</div>
-		</form>
+  	<h1>MusicMaster</h1>
+  	<div class="container" id="homebuttons">
+      <button class="homeOptions" id="tempokeyButton" onclick="window.location.href = 'search_by_bpm.html';" >Search by Beats Per Minute!</button>
+      <!-- <img src="images/vinyl.png"  -->
+      <button class="homeOptions" id="songButton" onclick="window.location.href = 'search_by_song.html';">Search by Song!</button>
+    </div>
 
-	    <script src="https://code.jquery.com/jquery.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-
-	</body>
+      <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>

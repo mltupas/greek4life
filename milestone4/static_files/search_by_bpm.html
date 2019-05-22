@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
   </head>
 
   <button id="backbutton" onclick="goBack()">Go Back</button>
@@ -15,14 +16,33 @@
   <body>
     <div class="info">
       <div id="notice"></div>
-      <div class="body">
+      <div class="body">        
         <div class="inline space-after" id='genres'>
           <h3>Current genres: <span id="current-genres"></span></h3>
           <button class="btn btn-aubergine btn-sm" id="choose-genres-button" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
         </div>
 
+        <!-- Playback Setting -->
+        <div class="inline">
+          <h3 class="spacer">Playback Songs</h3>
+          <div class="radio-inline" onclick="setPlaybackSetting(1)">
+            <label>
+              <input type="radio" name="playback-setting" value="1" checked>
+              Yes
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+          <div class="radio-inline" onclick="setPlaybackSetting(0)">
+            <label>
+              <input type="radio" name="playback-setting" value="0" >
+              No
+              <span class="control-indicator"></span>
+            </label>
+          </div>
+        </div>
+        
         <div>
-          <h5>Mode</h5>
+          <h3>Audio Features</h3>
           <h5>BPM (40-200 bpm)</h5>
           <input id="targetTempo" type="text" size="20" />
           <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="getRecommendations();">Search</button>
@@ -33,7 +53,7 @@
         <!-- Tracks to be appended here -->
       </div>
     </div>
-
+    
     <div class="modal fade" id="genre-select">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -57,8 +77,8 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+    </div><!-- /.modal -->   
+    
     <div class="modal fade" id="device-select">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -76,8 +96,8 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+    </div><!-- /.modal -->   
+    
     <script src="js/client_search_by_bpm.js"></script>
   </body>
 
@@ -85,12 +105,5 @@
     function goBack() {
       window.history.back()
     }
-
-
-  $('#saveButton').click(() => {
-    console.log('hello!');
-  });
-
-
   </script>
 </html>
