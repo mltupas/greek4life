@@ -4,7 +4,11 @@ body {
 }
 
 h2, h3, h4, h5 {
-    color: white;
+  color: white;
+}
+
+h4 {
+  text-align: center;
 }
 
 #backbutton {
@@ -13,14 +17,18 @@ h2, h3, h4, h5 {
   background-color: #005e94;
   color: #ffcf00;
   padding: 14px 20px;
+/*  
   margin:  0 auto;
+*/  
   border: none;
   cursor: pointer;
+/*  
   width: 30%;
+*/  
   display: block;
 }
 
-#choose-genres-button, #search-button, #select-genres-button, #genre-button, #saveButton {
+#choose-genres-button, #search-button, #select-genres-button, #genre-button {
   background-color: #005e94;
   color: #ffcf00;
   padding: 14px 20px;
@@ -29,7 +37,7 @@ h2, h3, h4, h5 {
   cursor: pointer;
 }
 
-#choose-genres-button:hover, #search-button:hover, #select-genres-button:hover, #genre-button:hover {
+#choose-genres-button:hover, #search-button:hover, #select-genres-button:hover, #genre-button:hover, #saveButton:hover, #backbutton:hover, #play-button:hover {
   opacity: 0.8;
 }
 
@@ -115,22 +123,23 @@ h3 {
 }
 
 #genres-list .btn {
-  margin: 5px;
+  margin: 5px;  
 }
 
 #tracks {
   width: 80%;
   height: 30%;
   overflow-y: scroll;
-  padding: 10px;
-  display: list-item;
-  flex-wrap: wrap;
-  -webkit-column-count: 2;
+/*  
+  padding: 20px;
+*/
 }
 
 .track-element {
   display: flex;
-  padding: inherit;
+  padding: 20px 0;
+  float: left;
+  width: 50%;
 }
 
 .track-element > div {
@@ -138,7 +147,7 @@ h3 {
 }
 
 .current-track {
-  background-color: #f573a0;
+  background-color: #08562B;
 }
 
 .current-track a {
@@ -146,17 +155,33 @@ h3 {
 }
 
 .album-art {
-  width: 150;
-  height: 150;
+  width: 100;
+  height: 100;
   margin: 0 20px;
 }
+
+.remove-icon {
+  width: 15px;
+  height: 15px;
+  align-self: center;
+/*  
+  margin: 1px 1px 1px 50px;
+*/
+}
+
 /* Rauls edit starts here! */
-#saveButton{
+#saveButton, #play-button {
+/*  
   width: inherit;
   height: 30px;
   padding: inherit;
   margin-left: 24px;
-}
-#saveButton:hover{
-  background-color: buttonface;
+*/
+  background-color: #005e94;
+  color: #ffcf00;
+  padding: 10px 20px;
+  margin: 8px 0 0 15px;
+  border: none;
+  cursor: pointer;
+  height: 30px;
 }
