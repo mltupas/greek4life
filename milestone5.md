@@ -11,13 +11,26 @@ These days beatmatching is considered basic among DJs in electronic dance music 
 # Screenshots:
 ### Screen 1 - Home Page (Index Page):
 
+![Screenshot](/milestone5_pics/index.JPG)
+
+From the last milestone, not much has changed in terms of affordances of the home page. Users are still able to look for song recommendations based on one of two criteria: beats per minute (BPM) or song name. Additionally, DJs still have the option to see their library of saved music, in case they navigate away from the application for some period of time or are looking to store a large number of songs. We have, however, altered the look and feel of the home page with the goal of making the music-finding experience even more intuitive for the user. The new color scheme is more appealing to the eye and helps guide the user's attention toward areas on the screen that are useful for them.
+
+### Screens 2 & 3 - Search by BPM/Song Title Page(s):
+
+![Screenshot](/milestone5_pics/search_by_song.JPG)
+![Screenshot](/milestone5_pics/search_by_bpm.JPG)
+
 *Written explanation of how your UI's screenshots have improved upon the versions shown in `milestone4.md`.*
 
-### Screen 2 - Search by BPM/Song Title Page(s):
+### Screen 4 - Saved Music Page:
 
 *Written explanation of how your UI's screenshots have improved upon the versions shown in `milestone4.md`.*
+
+![Screenshot](/milestone5_pics/saved_music.JPG)
 
 ### Data Visualization
+
+![Screenshot](/milestone5_pics/data_visualization.JPG)
 
 *A written explanation (***including screenshot***) of how you implemented your data display or visualizations, such as which libraries/frameworks you used (if any), how you hooked up to data APIs or databases, etc. (Again, you don't need a fancy visualization, but your data needs to be shown in a way that makes sense for your app.)*
 
