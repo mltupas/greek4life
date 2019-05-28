@@ -4,9 +4,9 @@
   "description": "Spotify recommendations jukebox",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.4",
+    "express": "^4.17.1",
     "querystring": "^0.2.0",
-    "request": "^2.81.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {},
   "scripts": {

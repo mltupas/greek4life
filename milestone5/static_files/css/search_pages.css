@@ -223,6 +223,10 @@ h3 {
 
 .img_wrap:hover .img_description {
   visibility: visible;
+  border-radius: 15px;
+  font-family: 'Comic Sans MS';
+  font-size: 14px;
+  padding: 5px;
   opacity: 1;
 }
 
