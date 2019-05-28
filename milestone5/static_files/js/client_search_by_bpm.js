@@ -14,7 +14,7 @@ let _token = window_hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Our app's client ID, redirect URI and desired scopes
-const clientId = '6f6707d1f1194e35bf69150e7d79ffe3'; // Your client id
+const clientId = '0244dbc6e09c4ca1b3d6f7f6f80497ab'; // Your client id
 const redirectUri = 'http://localhost:3000/search_by_bpm.html'; // Your redirect uri
 const scopes = [
   'streaming',
