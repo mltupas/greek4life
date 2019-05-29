@@ -20,7 +20,7 @@ From the last milestone, not much has changed in terms of affordances of the hom
 ![Screenshot](/milestone5_pics/search_by_song.JPG)
 ![Screenshot](/milestone5_pics/search_by_bpm.JPG)
 
-*Written explanation of how your UI's screenshots have improved upon the versions shown in `milestone4.md`.*
+Since the last milestone, we changed the button layout for the "Play" and "Save Song" functions. The play arrow and the heart symbol allow the user to carry out the two aforementioned actions and provide the user with feedback in the form of either an audio track or a confirmation popup. For the Search by Song Title page, we changed the way in which our search query returns matching audio. In the last milestone, the song that was searched for would (ideally) appear as the first result in your list of similar songs. However, we intended for the user to enter a song with the goal of receiving songs with similar BPMs in return. Therefore, we omitted the song that was searched for in our resulting list which gives the user 20 ***new*** songs instead of only 19, but kept the song that was searched for directly below the search bar in case the user still wants to save that song. Lastly, we thought that DJs would be interested in other audio features aside from BPM. So, we gave users the option to hover over the songs in their search results and see the song's key, energy, and danceability in addition to its BPM.
 
 ### Screen 4 - Saved Music Page:
 
