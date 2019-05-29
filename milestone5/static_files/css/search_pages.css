@@ -55,6 +55,7 @@ label {
 #curGenre {
   margin: auto;
   font-size: large;
+  color: #ff0064;
 }
 
 #searched-track {
