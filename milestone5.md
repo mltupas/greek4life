@@ -24,9 +24,9 @@ Since the last milestone, we changed the button layout for the "Play" and "Save 
 
 ### Screen 4 - Saved Music Page:
 
-*Written explanation of how your UI's screenshots have improved upon the versions shown in `milestone4.md`.*
-
 ![Screenshot](/milestone5_pics/saved_music.JPG)
+
+The last milestone was the first version of our application that included the Saved Music page. The changes made to this page served the purpose of keeping the user interface consistent across all pages. Similar to the two aforementioned pages, the "Play Song" prompt has been replaced with the play arrow. Additionally, the columns have been reformatted to be in-line with the "Playback" function. Lastly, if a user no longer wants a song in their list of saved songs they can remove it by clicking on the marker to the left of the album cover.
 
 ### Data Visualization
 
