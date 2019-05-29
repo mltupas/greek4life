@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-  	<title></title>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta charset="utf-8">
+    	<title></title>
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link href="css/style.css" rel="stylesheet">
   	<script src="https://code.jquery.com/jquery.js"></script>
+
   </head>
 
+
   <body background="images/dj.png">
-  	<h1>MusicMaster</h1>
+
+    <input type="image" placeholder= "Saved songs!" title="Saved songs!" id="savedMusicButton" src="../images/multimedia.png" onclick="window.location.href = 'saved_music.html';"></input>
+
   	<div class="container" id="homebuttons">
-      <button class="homeOptions" id="tempokeyButton" onclick="window.location.href = 'search_by_bpm.html';" >Search by Beats Per Minute!</button>
-      <!-- <img src="images/vinyl.png"  -->
-      <button class="homeOptions" id="songButton" onclick="window.location.href = 'search_by_song.html';">Search by Song!</button>
-      <h2 id="intro">Looking to start your next mix? Start your search here!</h2>
-      <button class="homeOptions" id="savedMusicButton" onclick="window.location.href = 'saved_music.html';">See Saved Music!</button>
+
+      <input type="image" src="../images/bpmvinyl.png"  class="indexImage" onclick="window.location.href = 'search_by_bpm.html';" ></input>
+      <input type="image" src="../images/songvinyl.png"  class="indexImage" onclick="window.location.href = 'search_by_song.html';"></input>
+    
     </div>
-    <script src="js/bootstrap.min.js"></script>
+
+      <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
