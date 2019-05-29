@@ -32,7 +32,14 @@ The last milestone was the first version of our application that included the Sa
 
 ![Screenshot](/milestone5_pics/data_visualization.JPG)
 
-*A written explanation (***including screenshot***) of how you implemented your data display or visualizations, such as which libraries/frameworks you used (if any), how you hooked up to data APIs or databases, etc. (Again, you don't need a fancy visualization, but your data needs to be shown in a way that makes sense for your app.)*
+When we query a track from Spotify's API we recieve an *audio features object* in return. From this object we selected four features that we deemed most important for DJs when deciding which tracks to include in a new mix. We selected:
+
+* `tempo`: the overall estimated tempo of a track in beats per minute (BPM).
+* `key`:  integers map to pitches using standard *Pitch Class* notation (e.g. 0 = C, 1 = C♯/D♭, 2 = D, etc.).
+* `energy`: a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity.
+* `danceability`: describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. 
+
+When the user hovers over a track they will see the four features described above (this is also explained in the ***Screens 2 & 3*** section above).
 
 # Ambitious Data Display
 
