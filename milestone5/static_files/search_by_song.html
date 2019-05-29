@@ -12,7 +12,7 @@
   </head>
 
   <div id="main">
-    <button id="backbutton" onclick="goBack()">Go Back</button>
+    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
   </div>
 
   <input type="image" placeholder= "Saved songs!" title="Saved songs!" id="savedMusicButton" src="../images/multimedia.png" onclick="window.location.href = 'saved_music.html';"></input>
@@ -38,12 +38,18 @@
               <span class="control-indicator"></span>
             </label>
           </div>
+        </div>
 
+        <div class="inline">
           <h3>Song Title</h3>
           <input id="songName" type="text" size="20" />
           <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="findSongID();">Search</button>
         </div>
-    </div>
+      </div>
+      <div id="searched-track">
+        <!-- Searched track to be appended here -->
+      </div>
+      
       <h4 id="songTempo">Enter a song title to display its BPM and a list of song recommendations based on the genre and BPM of the given song.</h4>
       <div id="tracks">
         <!-- Tracks to be appended here -->
@@ -54,6 +60,7 @@
 
   <script>
     function goBack() {
+      // window.history.back();
       window.location.href = 'index.html';
     }
   </script>

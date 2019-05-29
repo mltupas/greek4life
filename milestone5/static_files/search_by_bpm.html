@@ -12,11 +12,11 @@
   </head>
 
   <div id="main">
-    <button id="backbutton" onclick="goBack()">Go Back</button>
+    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
   </div>
 
   <input type="image" placeholder= "Saved songs!" title="Saved songs!" id="savedMusicButton" src="../images/multimedia.png" onclick="window.location.href = 'saved_music.html';"></input>
-  
+
   <body>
     <div class="info">
       <div id="notice"></div>
@@ -45,15 +45,15 @@
           </div>
         </div>
 
-        <div>
+        <div class="inline">
           <h3>Audio Features</h3>
           <h5>BPM (40-200 bpm)</h5>
           <input id="targetTempo" type="text" size="20" />
           <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="getRecommendations();">Search</button>
         </div>
       </div>
+      <h4 id="hoverDirections">Select up to 5 Genres and enter a BPM value within the specified range to get a list of song recommendations that correspond to the selected genres and BPM value.</h4>
       <div id="tracks">
-        <h4>Select up to 5 Genres and enter a BPM value within the specified range to get a list of song recommendations that correspond to the selected genres and BPM value.</h4>
         <!-- Tracks to be appended here -->
       </div>
     </div>
@@ -81,32 +81,13 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <div class="modal fade" id="device-select">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Select a device</h4>
-          </div>
-          <div class="modal-body">
-            <div id="devices-list">
-              <!-- Buttons for each device to be appended here -->
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-aubergine" data-dismiss="modal">All done!</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+    </div><!-- /.modal -->    
     <script src="js/client_search_by_bpm.js"></script>
   </body>
 
   <script>
     function goBack() {
+      // window.history.back();
       window.location.href = 'index.html';
     }
   </script>
