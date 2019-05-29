@@ -43,7 +43,7 @@ To make queries to Spotify's API, we used the Express web server framework, "Req
 * `energy`: a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
 * `danceability`: a measure from 0.0 to 1.0 that describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
 
-When the user hovers over a track, they will see the four features described above (this is also explained in the ***Screens 2 & 3*** section above).
+When the user hovers over a track, they will see the four features described above (this is also explained in the ***Screens 2 & 3*** section above). In addition to having this data visualization be on the Search by BPM page, as shown in the above picture, this data visualization is also shown on the Search by Song Title and Saved Music pages.
 
 # Ambitious Data Display
 
