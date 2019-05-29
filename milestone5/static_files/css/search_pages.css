@@ -1,10 +1,10 @@
 body {
-  font-family: Marker Felt;
-  background-color: #b7d2e4;
+  font-family: Times;
+  background-color: #182B49;
 }
 
 h2, h3, h4, h5 {
-  color: black;
+  color: white;
 }
 
 h4 {
@@ -16,10 +16,10 @@ h4 {
 }
 
 #backbutton {
-  margin-left:0;
-  margin-right:auto;
-  background-color: #1f3553;
-  color: white;
+  margin-left: 0;
+  margin-right: auto;
+  background-color: #005e94;
+  color: #ffcf00;
   padding: 14px 20px;
   margin: 10px 10px;
   display: block;
@@ -27,8 +27,8 @@ h4 {
 }
 
 #choose-genres-button, #search-button, #select-genres-button, #genre-button {
-  background-color: #1f3553;
-  color: white;
+  background-color: #005e94;
+  color: #ffcf00;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -40,16 +40,35 @@ h4 {
 }
 
 #genre-button:active, #genre-button.active, .open > .dropdown-toggle#genre-button, #genre-button:active:hover, #genre-button.active:hover, .open > .dropdown-toggle#genre-button:hover {
-    background-color: #ff0064;
+    background-color: #182B49;
     box-shadow: none;
 }
 
-#track-name, #select-genres-title {
-  color: #ff0064;
+#curGenre {
+  margin: auto;
+  font-size: large;
+}
+
+#searched-track {
+  margin-left: 465px;
+}
+
+.inline {
+  display: inline-table;
+}
+
+#track-name {
+  color: #ffcf00;
+  margin: 20px 0px 0px 0px;
+}
+
+#select-genres-title {
+  color: #ffcf00;
+  margin: 0px 0px 0px 0px;
 }
 
 #artist-name {
-  color: black;
+  color: white;
 }
 
 #modal-title {
@@ -67,7 +86,7 @@ h3 {
 }
 
 .space-after {
-  margin-bottom: 15px;
+  margin-right: 15px;
 }
 
 ::-webkit-scrollbar {
@@ -99,12 +118,19 @@ h3 {
 .info {
   display: flex;
   flex-flow: column nowrap;
-  /*align-items: center;*/
 }
 
 .info .body {
   width: 80%;
-  padding: 30px;
+  padding: 10px 0px 0px 10px;
+}
+
+#hoverDirections, #songTempo {
+  padding-right: 120px; 
+}
+
+#search-button {
+  margin-left: 20px;
 }
 
 #current-user, #current-playback {
@@ -121,16 +147,12 @@ h3 {
 }
 
 #genres-list .btn {
-  margin: 5px;
+  margin: 5px;  
 }
 
 #tracks {
   width: 100%;
   height: 30%;
-  /*overflow-y: scroll;*/
-/*
-  padding: 20px;
-*/
 }
 
 .track-element {
@@ -162,32 +184,100 @@ h3 {
   width: 15px;
   height: 15px;
   align-self: center;
+  cursor: pointer;
+}
 
+.save-song-icon, .play-icon {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin: 12px 0px 0px 20px;
+}
+
+.save-song-icon:hover, .play-icon:hover {
+  cursor: pointer;
+}
+
+/* quick reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* relevant styles */
+.img_wrap, .icon_wrap {
+  position: relative;
+  height: auto;
+  width: auto;
+}
+
+.img_description {
+  position: absolute;
+  top: 0;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.icon_description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img_wrap:hover .img_description {
+  visibility: visible;
+  opacity: 1;
+}
+
+.icon_wrap:hover .icon_description {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#tempo_hidden, #key_hidden, #energy_hidden, #danceability_hidden, #play_hidden, #save_hidden {
+  margin: 0;
 }
 
 /* Rauls edit starts here! */
 #saveButton, #play-button {
-  background-color: #1f3553;
-  color: white;
+  background-color: #005e94;
+  color: #ffcf00;
   padding: 10px 20px;
   margin: 8px 0 0 15px;
   border: none;
   cursor: pointer;
   height: 30px;
+  min-width: 70px;
 }
 
-#savedMusicButton{
-  height: 115px;
-  width: 115px;
-  float: right;
-}
 /*
 #genres, #current-genres, #choose-genres-button, #search-button {
   display: inline-block;
   float:left;
 }
+*/
 
-ul li {
+/*
+ul, li {
   float: left;
   display: inline;
   padding-left: 10px;
