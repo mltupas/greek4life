@@ -36,4 +36,4 @@ The last milestone was the first version of our application that included the Sa
 
 # Ambitious Data Display
 
-*Contains a paragraph describing some more ambitious data display or visualization ideas beyond what you've implemented that would make your app more polished. Note that you do NOT need to implement those ideas, so feel free to be more creative here.*
+One idea that we came up with for ambitious data display is to make the audio features for each recommended song appear in a modal, similar to the one that appears when selecting genres. Implementing this feature would improve the readability of the audio features and would normalize the user interface even further.
