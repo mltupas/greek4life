@@ -12,7 +12,7 @@
   </head>
 
   <div id="main">
-    <button id="backbutton" onclick="goBack()">Go Back</button>
+    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
   </div>
 
   <body>
@@ -37,7 +37,7 @@
           </div>
         </div>
       </div> 
-      <div id="tracks">
+      <div class="saved-tracks">
         <!-- Tracks to be appended here -->
       </div>
     </div>
@@ -46,6 +46,7 @@
 
   <script>
     function goBack() {
+      // window.history.back();
       window.location.href = 'index.html';
     }
   </script>

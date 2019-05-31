@@ -3,27 +3,8 @@ const request = require('request'); // "Request" library
 const querystring = require('querystring');
 
 const app = express();
-
 const spotifyBaseUrl = 'https://api.spotify.com/v1/';
-
 app.use(express.static(__dirname + '/static_files'));
-
-// app.get('/devices', function(req, res) {
-
-//   let token = req.query.token;
-
-//   let requestURL = spotifyBaseUrl + 'me/player/devices';
-
-//   let options = {
-//     url: requestURL,
-//     headers: { 'Authorization': 'Bearer ' + token },
-//     json: true
-//   };
-
-//   request.get(options, function(error, response, body) {
-//     res.send(body.devices);
-//   });
-// });
 
 app.post('/transfer', function(req, res) { 
 
@@ -62,8 +43,6 @@ app.get('/genres', function(req, res) {
   request.get(options, function(error, response, body) {
     console.log('error: ' + error);
     console.log('response: ' + response);
-    // console.log('body: ');
-    // console.log(body);
     console.log('body.genres: ' + body.genres);
     res.json(body.genres);
   });
@@ -172,8 +151,6 @@ app.get('/recommendations', function(req, res) {
   request.get(options, function(error, response, body) {
     console.log('error: ' + error);
     console.log('response: ' + response);
-    // console.log('body: ');
-    // console.log(body);
     res.json(body);
   });
 });
@@ -201,8 +178,6 @@ app.get('/recommendations2', function(req, res) {
   request.get(options, function(error, response, body) {
     console.log('error: ' + error);
     console.log('response: ' + response);
-    // console.log('body: ');
-    // console.log(body);
     res.json(body);
   });
 });
@@ -230,9 +205,14 @@ app.get('/tracks', function(req, res) {
 });
 
 app.post('/play', function(req, res) {
+  console.log('in /play');
   let tracks = req.query.tracks;
   let device_id = req.query.device_id;
   let token = req.query.token;
+
+  console.log('tracks: ' + tracks);
+  console.log('device_id: ' + device_id);
+  console.log('token: ' + token);
 
   let requestURL = spotifyBaseUrl + 'me/player/play?' +
   querystring.stringify({

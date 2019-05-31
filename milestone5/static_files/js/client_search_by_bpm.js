@@ -14,7 +14,7 @@ let _token = window_hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Our app's client ID, redirect URI and desired scopes
-const clientId = '6f6707d1f1194e35bf69150e7d79ffe3'; // Your client id
+const clientId = '0244dbc6e09c4ca1b3d6f7f6f80497ab'; // Your client id
 const redirectUri = 'http://localhost:3000/search_by_bpm.html'; // Your redirect uri
 const scopes = [
   'streaming',
@@ -37,7 +37,7 @@ genreLimitAlert("off");
 
 // Initialise Web Playback SDK
 function onSpotifyPlayerAPIReady() {
-  
+
   let player = new Spotify.Player({
     name: 'User',
     getOAuthToken: function(cb) {
@@ -52,18 +52,21 @@ function onSpotifyPlayerAPIReady() {
   });
 
   player.on('player_state_changed', function(data) {
+    console.log('entered player_state_changed');
     if(data) {
+      console.log('about to update currently playing song');
       let currentTrack = data.track_window.current_track.uri;
       updateCurrentlyPlaying(currentTrack);
-    }  
+    }
   });
 
+  console.log('connecting player');
   player.connect();
 }
 
 function setPlaybackSetting(setting) {
   playbackSetting = setting;
-  
+
   if (setting == 0) {
     deviceId = null;
     pause();
@@ -122,7 +125,7 @@ function getGenresList() {
       }
     });
   });
-  
+
   $('#genres-list').on('change', 'input', function() {
     if($('#genres-list input:checked').length > 5) {
       $(this).parent().removeClass("active");
@@ -141,9 +144,17 @@ function updateGenres() {
   $('#genres-list input:checked').each(function() {
     genres.push($(this).val());
   });
+
+  $('#current-genres').empty();
+  genres.forEach((genre) => {
+    let genreElement = '<p id="curGenre">' + genre + '</p>';
+    $('#current-genres').append(genreElement);
+    console.log('genreElement: ');
+    console.log(genreElement);
+  });
+
   let genresString = genres.join();
   localStorage.setItem('currentGenres', genresString);
-  $('#current-genres').text(genresString);
 
   const genresId = document.getElementById('genres');
   const currentGenres = genresId.getElementsByTagName('span');
@@ -160,13 +171,7 @@ function updateGenres() {
 
 function getRecommendations() {
   // Get selected genres
-  let genres = [];
-  $('#genres-list input:checked').each(function() {
-    genres.push($(this).val());
-  });
-  let genresString = genres.join();
-  localStorage.setItem('currentGenres', genresString);
-  $('#current-genres').text(genresString);
+  let genresString = localStorage.getItem('currentGenres');
   
   requestURL = '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token;
   console.log('requestURL: ' + requestURL);
@@ -210,23 +215,13 @@ function getRecommendations() {
   });
 }
 
-// function renderTracks(ids) {
-//   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
-//     tracks.forEach(function(track) {
-//       let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-//       let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="https://cdn.glitch.com/9641d2b3-59eb-408e-ab02-0b9bbd49b069%2Fremove-icon.png?1508341583541" onclick="remove(\'' + track.uri + '\');"/><img class="album-art" src="' + image + '"/><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><button type="button" onclick="saveSong(\'' + track.uri + '\');" class="btn btn-aubergine" id="saveButton" value="Save Song">Save Song</button></li><li><button type="button" onclick="play(\'' + track.uri + '\');" class="btn btn-aubergine" id="play-button" value="Play Song">Play Song</button></li><li><button type="button" onclick="getAudioFeatures(\'' + track.uri + '\');" class="btn btn-aubergine" id="audio-features-button" value="Features">Features</button></li><li><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/></li><li><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/></li><li><img class="audio-features-icon" src="images/audio-features.png" onclick="getAudioFeatures(\'' + track.uri + '\');"/></li></ul></div></div>';
-//       $('#tracks').append(trackElement);
-//     })
-//   });
-// }
-
 //updated code in client_search_by_bpm.js
 function renderTracks(ids) {
   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
     tracks.forEach(function(track) {
       $.get('/track?trackID=' + track.uri.substring(14) + '&token=' + _token, function(trackDetails) {
         let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-        let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="https://cdn.glitch.com/9641d2b3-59eb-408e-ab02-0b9bbd49b069%2Fremove-icon.png?1508341583541" onclick="remove(\'' + track.uri + '\');"/><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + trackDetails.key + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li><li><div class="icon_wrap"><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/><ul class="icon_description" onclick="saveSong(\'' + track.uri + '\');"><p id="save_hidden">Save</p></ul></div></li></ul></div></div>';
+        let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="../images/remove-icon.png" onclick="remove(\'' + track.uri + '\');"/><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + trackDetails.key + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li><li><div class="icon_wrap"><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/><ul class="icon_description" onclick="saveSong(\'' + track.uri + '\');"><p id="save_hidden">Save</p></ul></div></li></ul></div></div>';
         $('#tracks').append(trackElement);
         console.log('track.uri: ' + track.uri);
         console.log('trackDetails: ');
@@ -235,19 +230,6 @@ function renderTracks(ids) {
     });
   });
 }
-
-// function getAudioFeatures(track) {
-//   console.log('in getAudioFeatures with track: ' + track);
-//   let trackID = track.substring(14);
-//   console.log('trackID: ' + trackID);
-
-//   $('#features-list').empty();
-//   $.get('/track?trackID=' + trackID + '&token=' + _token, function(track) {
-//     console.log('in get call with track: ');
-//     console.log(track);
-//     return track;
-//   });
-// }
 
 function saveSong(track) {
   const savedSongsList = localStorage.getItem('savedSongs') ? localStorage.getItem('savedSongs').split(',') : [];

@@ -1,5 +1,5 @@
 body {
-  background-color: #182B49;
+  background-color: #b7d2e4;
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 950px 590px;
@@ -16,8 +16,8 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background-color: #005e94;
-  color: #ffcf00;
+  background-color: #b7d2e4;
+  color: #ff0064;
   padding: 14px 20px;
   margin:  0 auto;
   border: none;
@@ -37,9 +37,14 @@ button:hover {
 }
 
 h1 {
-    color: white;
-    text-align: center;
+  color: #ff0064;
+  text-align: center;
+  margin-top: 200px;
+  display: inline-block;
+  padding-left: 150px;
+  padding-right: 150px;
 }
+
 .login {
   border-color: white;
   border-width: 1px;
@@ -74,43 +79,50 @@ p {
 div.profileOption {
   margin: 20px;
 }
+
 div#homebuttons {
-  margin-top: 300px;
+  margin-top: 270px;
 }
-h1{
-  margin-top: 110px;
-}
-h3{
+
+h3 {
   color: white;
 }
-text{
+
+text {
   color: white;
 }
 
 /*CSS for home.html buttons*/
-.homeOptions{
-  display: inline-block;
+.homeOptions {
   margin: 50px;
   width: 30%;
   height: 200px;
   font-size: 30px;
 }
 
-.container{
+.container {
   width: 100%;
   text-align: center;
   margin: auto;
 }
 
-#bpmButton{
+#bpmButton {
   width: auto;
   display: inline;
 }
-#tempokeyButton, #songButton{
-  background-image: url(../images/vinyl.png);
-  background-size: cover
+
+.indexImage {
+  height: 250px;
+  width: 250px;
+  padding-left: 67px;
+  padding-right: 67px;
+  padding-top: 40px;
 }
 
+#savedMusicButton {
+  height: 115px;
+  width: 115px;
+}
 
 .dropbtn {
   background-color: #ddd;
@@ -150,7 +162,3 @@ text{
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
-
-h2 {
-  color: white;
-}
