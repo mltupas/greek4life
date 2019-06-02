@@ -21,29 +21,51 @@ ___Cole Richmond___
 
 *List of all source code files in your GitHub project repository that your team members wrote, along with a brief description of what functionality is implemented in each file. This should include all HTML, CSS, JavaScript, and other relevant code files that you wrote.*
 
-Static Files
+> static_files
 
-> css
+>> css
 
->> search_pages.css
+>>> search_pages.css
 
->> style.css
+* test
 
-> js
+>>> style.css
 
->> cient_saved_music.js
+* test
+
+>> js
+
+>>> cient_saved_music.js
+
+* test
 
 >>> client_search_by_bpm.js
 
->> client_search_by_song.js
+* test
 
-> index.html
+>>> client_search_by_song.js
 
-> saved_music.html
+* test
 
-> search_by_bpm.html
+>> index.html
 
-> search_by_song.html
+* test
+
+>> saved_music.html
+
+* test
+
+>> search_by_bpm.html
+
+* test
+
+>> search_by_song.html
+
+* test
+
+> server.js
+
+* test
 
 # Presentation Slide
 
