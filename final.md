@@ -23,4 +23,4 @@ ___Cole Richmond___
 
 # Presentation Slide
 
-*This single slide should contain a family-friendly app name (not your team's name ... come up with an appropriate name for your final app), a single big screenshot of your app, and a short slogan describing what it does in 6 words or less.*
+https://docs.google.com/presentation/d/13Wbi-3l_JG5X7iTDh9t57-AvS6vlHoNo7BM4bTO7DN0/edit?usp=sharing
