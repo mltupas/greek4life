@@ -23,17 +23,25 @@ ___Cole Richmond___
 
 ### Static Files
 > css
+
 >> search_pages.css
+
 >> style.css
 
 > js
+
 >> cient_saved_music.js
+
 >> client_search_by_bpm.js
+
 >> client_search_by_song.js
 
 > index.html
+
 > saved_music.html
+
 > search_by_bpm.html
+
 > search_by_song.html
 
 # Presentation Slide
