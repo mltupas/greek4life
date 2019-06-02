@@ -33,7 +33,7 @@ Static Files
 
 >> cient_saved_music.js
 
->> client_search_by_bpm.js
+>>> client_search_by_bpm.js
 
 >> client_search_by_song.js
 
