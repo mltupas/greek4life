@@ -192,6 +192,7 @@ app.get('/recommendations2', function(req, res) {
   let token = req.query.token;
   delete req.query.token;
 
+  // Make limit 21 so searched song will not show up as a recommendation
   let requestURL = spotifyBaseUrl + 'recommendations?' + 
   querystring.stringify({
     limit: 21,
