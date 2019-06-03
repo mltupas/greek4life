@@ -28,7 +28,7 @@ ___Cole Richmond___
 
 # Source Code Files
 
-*List of all source code files in your GitHub project repository that your team members wrote, along with a brief description of what functionality is implemented in each file. This should include all HTML, CSS, JavaScript, and other relevant code files that you wrote.*
+*Here is a list of all source code files in our GitHub project repository that we wrote, along with a brief description of what functionality is implemented in each file. The top-level directory is the 'final' folder, with each new level represented as one indentation.*
 
 final
 
