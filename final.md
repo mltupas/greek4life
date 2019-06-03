@@ -24,6 +24,8 @@ ___Cole Richmond___
 
 *List of all source code files in your GitHub project repository that your team members wrote, along with a brief description of what functionality is implemented in each file. This should include all HTML, CSS, JavaScript, and other relevant code files that you wrote.*
 
+final
+
 > static_files
 
 >> css
