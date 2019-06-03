@@ -12,7 +12,9 @@ ___Allston Fojas___
 * Helped combine frontend code with backend code to get our app to work and meet the requirements for each milestone
 
 ___Mark Tupas___ 
-* ...
+* Wrote backend code for JS files, including AJAX calls to Spotify's API and displaying returned information to frontend
+* Wrote code for web app features such as the on-hover feature on album art, dual-column song display, and localStorage function (subsequently replaced with Firebase) to display saved songs
+* Facilitated ease of use of web app by restructuring page layout, creating auto-popup menus (when first entering search_by_bpm.html), and providing visual cues to user (asterisks to denote required fields).
 
 ___Raul Garza___
 * ...
