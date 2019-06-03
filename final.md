@@ -17,8 +17,9 @@ ___Mark Tupas___
 * Facilitated ease of use of web app by restructuring page layout, creating auto-popup menus (when first entering search_by_bpm.html), and providing visual cues to user (asterisks to denote required fields).
 
 ___Raul Garza___
-*  Worked mostly on creating UI for the homepage and writing front-end code in HTML and CSS for the rest of the app.
-*  Used Pixelmator Pro editing software to create the Music Master logos and accompanying graphic images.
+*  Worked mostly on creating UI for the homepage and writing front-end code in HTML & CSS for the rest of the app.
+*  Worked on creating unifying color scheme and font choice.
+*  Used Pixelmator Pro graphic editing software to create the Music Master logos and accompanying graphic images seen.
 
 ___Cole Richmond___
 * ...
