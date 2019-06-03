@@ -3,6 +3,7 @@
     <title>MusicMaster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/search_pages.css"/>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -11,23 +12,19 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
   </head>
 
-  <div id="main">
-    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
-  </div>
-
   <input type="image" placeholder= "Saved songs!" title="Saved songs!" id="savedMusicButton" src="../images/multimedia.png" onclick="window.location.href = 'saved_music.html';"></input>
 
   <body>
     <div class="info">
       <div id="notice"></div>
       <div class="body">
-        <div class="inline space-after" id='genres'>
-          <h3>Current genres: <span id="current-genres"></span></h3>
-          <button class="btn btn-aubergine btn-sm" id="choose-genres-button" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
-        </div>
 
         <!-- Playback Setting -->
         <div class="inline">
+            <div id="main">
+              <button id="backbutton" onclick="goBack()">Go to Home Page</button>
+            </div>
+
           <h3 class="spacer">Playback Songs</h3>
           <div class="radio-inline" onclick="setPlaybackSetting(1)">
             <label>
@@ -45,14 +42,18 @@
           </div>
         </div>
 
-        <div class="inline">
-          <h3>Audio Features</h3>
-          <h5>BPM (40-200 bpm)</h5>
+        <div class="inline space-after" id='genres'>
+          <h3 class="required-field">Current genres<span id="current-genres"></span></h3>
+          <button class="btn btn-aubergine btn-sm" id="choose-genres-button" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+        </div>
+
+        <div class="inline input">
+          <h4 class="required-field">Enter your target BPM value (40-200 BPM)</h4>
           <input id="targetTempo" type="text" size="20" />
           <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="getRecommendations();">Search</button>
         </div>
       </div>
-      <h4 id="hoverDirections">Select up to 5 Genres and enter a BPM value within the specified range to get a list of song recommendations that correspond to the selected genres and BPM value.</h4>
+      <h4 id="hoverDirections"></h4>
       <div id="tracks">
         <!-- Tracks to be appended here -->
       </div>
@@ -63,7 +64,7 @@
         <div class="modal-content">
           <div class="modal-header" id="modal-title">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="select-genres-title">Select your genres</h4>
+            <h4 class="modal-title" id="select-genres-title">Select up to 5 genres you would like recommendations for</h4>
           </div>
           <div class="modal-body">
             <div id="genreLimitAlert" class="alert alert-danger alert-dismissible" role="alert" style="display:none;">
@@ -83,12 +84,8 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->    
     <script src="js/client_search_by_bpm.js"></script>
+    <script>
+      function goBack() {window.location.href = 'index.html';}</script>
+      <script>jQuery(function(){jQuery('#choose-genres-button').click();});</script>
   </body>
-
-  <script>
-    function goBack() {
-      // window.history.back();
-      window.location.href = 'index.html';
-    }
-  </script>
 </html>

@@ -3,6 +3,7 @@
     <title>MusicMaster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/search_pages.css"/>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -11,15 +12,15 @@
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
   </head>
 
-  <div id="main">
-    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
-  </div>
-
   <body>
     <div class="info">
       <div class="body">
         <!-- Playback Setting -->
         <div class="inline">
+          <div id="main">
+            <button id="backbutton" onclick="goBack()">Go to Home Page</button>
+          </div>
+
           <h3 class="spacer">Playback Songs</h3>
           <div class="radio-inline" onclick="setPlaybackSetting(1)">
             <label>
@@ -36,6 +37,8 @@
             </label>
           </div>
         </div>
+
+        <h3 class="saved-description">Here are the songs you've saved</h3>
       </div> 
       <div class="saved-tracks">
         <!-- Tracks to be appended here -->

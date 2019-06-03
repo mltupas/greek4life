@@ -3,6 +3,7 @@
     <title>MusicMaster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/search_pages.css"/>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -10,10 +11,6 @@
     <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
   </head>
-
-  <div id="main">
-    <button id="backbutton" onclick="goBack()">Go to Home Page</button>
-  </div>
 
   <input type="image" placeholder= "Saved songs!" title="Saved songs!" id="savedMusicButton" src="../images/multimedia.png" onclick="window.location.href = 'saved_music.html';"></input>
 
@@ -23,6 +20,9 @@
       <div class="body">
         <!-- Playback Setting -->
         <div class="inline">
+            <div id="main">
+              <button id="backbutton" onclick="goBack()">Go to Home Page</button>
+            </div>
           <h3 class="spacer">Playback Songs</h3>
           <div class="radio-inline" onclick="setPlaybackSetting(1)">
             <label>
@@ -40,8 +40,8 @@
           </div>
         </div>
 
-        <div class="inline">
-          <h3>Song Title</h3>
+        <div class="inline song_input">
+          <h3 class="required-field">Enter song title to get songs with a similar genre & BPM</h3>
           <input id="songName" type="text" size="20" />
           <button type="button" class="btn btn-aubergine" id="search-button" data-dismiss="modal" onclick="findSongID();">Search</button>
         </div>
@@ -50,7 +50,7 @@
         <!-- Searched track to be appended here -->
       </div>
       
-      <h4 id="songTempo">Enter a song title to display its BPM and a list of song recommendations based on the genre and BPM of the given song.</h4>
+      <h4 id="songTempo"></h4>
       <div id="tracks">
         <!-- Tracks to be appended here -->
       </div>

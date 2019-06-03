@@ -162,11 +162,6 @@ function updateGenres() {
 
   $('#tracks').empty();
   $('#hoverDirections').empty();
-  if (targetTempo.value === '') {
-    $('#tracks').append('<h2>Please enter a BPM value. Then, click Search.</h2>')
-  } else if ((currentGenres[0].innerHTML !== '') && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
-    $('#tracks').append('<h2>Now, click Search.</h2>')
-  }
 }
 
 function getRecommendations() {
@@ -205,11 +200,11 @@ function getRecommendations() {
           $('#tracks').append('<h2>No results. Try a broader search.</h2>')
         }
       } else if (currentGenres[0].innerHTML === '' && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
-        $('#tracks').append('<h2>No results. Please enter genres first.</h2>')
+        // $('#tracks').append('<h2>No results. Please enter genres first.</h2>')
       } else if (targetTempo.value !== '' && (targetTempo.value < 40 || targetTempo.value > 200)) {
-        $('#tracks').append('<h2>No results. Please enter a valid BPM value first.</h2>')
+        // $('#tracks').append('<h2>No results. Please enter a valid BPM value first.</h2>')
       } else {
-        $('#tracks').append('<h2>No results. Please enter a BPM value first.</h2>')
+        // $('#tracks').append('<h2>No results. Please enter a BPM value first.</h2>')
       }
     },
   });

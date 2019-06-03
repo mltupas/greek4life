@@ -194,11 +194,14 @@ function getSimilarRecommendations(artistGenres, songTempo) {
           $('#songTempo').text("Your searched song is shown above, but there are no recommendations available. Hover over its album art to see its audio features.");
         }
       } else if (currentGenres === '' && (targetTempo >= 40 && targetTempo <= 200)) {
-        $('#tracks').append('<h2>No results. Please enter another song name first.</h2>');
+        $('#tracks').append('<h2>No results. Please enter another song name.</h2>');
       } else if (targetTempo !== '' && (targetTempo < 40 || targetTempo > 200)) {
-        $('#tracks').append('<h2>No results. Please enter another song name first.</h2>');
+        $('#tracks').append('<h2>No results. Please enter another song name.</h2>');
       } else {
-        $('#tracks').append('<h2>No results. Please enter another song name first.</h2>');
+        $('#tracks').append('<h2>No results. Please enter another song name.</h2>');
+        console.log('currentGenres: ' , currentGenres);
+        console.log('data.tracks: ' , data.tracks);
+        console.log('targetTempo: ' , targetTempo);
       }
     },
   });
