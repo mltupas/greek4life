@@ -10,11 +10,13 @@ ___Allston Fojas___
 * Wrote the server code to access and use the relevant Spotify API endpoints, such as playing and pausing a song, getting a song's audio features, and getting a list of song recommendations based on certain search parameters
 * Wrote the code to gain access to Firebase and use it instead of LocalStorage
 * Helped combine frontend code with backend code to get our app to work and meet the requirements for each milestone
+* Helped with some CSS code, particularly to center text on the search pages
 
 ___Mark Tupas___ 
 * Wrote backend code for JS files, including AJAX calls to Spotify's API and displaying returned information to frontend
 * Wrote code for web app features such as the on-hover feature on album art, dual-column song display, and localStorage function (subsequently replaced with Firebase) to display saved songs
 * Facilitated ease of use of web app by restructuring page layout, creating auto-popup menus (when first entering search_by_bpm.html), and providing visual cues to user (asterisks to denote required fields).
+* Provided a screen capture of our application to demonstrate its various uses in a demo video
 
 ___Raul Garza___
 *  Worked mostly on creating UI for the homepage and writing front-end code in HTML & CSS for the rest of the app.
