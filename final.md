@@ -52,11 +52,11 @@ ___Cole Richmond___
 
 >> index.html
 
-* test
+* This is the home page for our application. From this page, the user can decide to do one of three things: see their saved songs from prior interactions with the application, choose to search for new songs by their tempo (measured in beats per mimute), or choose to search for new songs that share similar a similar tempo with the song that was searched for. 
 
 >> saved_music.html
 
-* test
+* This page is where users are able to store their favorite songs to be used later. Additionally, users are able to play their saved songs using the playback setting from the Spotify API as well as remove songs from their list of saved songs.
 
 >> search_by_bpm.html
 
