@@ -9,6 +9,7 @@ ___Allston Fojas___
 * Wrote the backend code in each of the JS pages for each respective HTML page to access the Spotify API's endpoints and Firebase to update the realtime database
 * Wrote the server code to access and use the relevant Spotify API endpoints, such as playing and pausing a song, getting a song's audio features, and getting a list of song recommendations based on certain search parameters
 * Wrote the code to gain access to Firebase and use it instead of LocalStorage
+* Wrote the code documentation as comments within each source code file
 * Helped combine frontend code with backend code to get our app to work and meet the requirements for each milestone
 * Helped with some CSS code, particularly to center text on the search pages
 
