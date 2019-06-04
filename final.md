@@ -84,4 +84,4 @@ https://docs.google.com/presentation/d/1grHH8VHdZIFrviFxI0kQxHAs-roQo7u2T-Za-w8m
 
 # Demo Video
 
-[INSERT LINK HERE]
+https://www.youtube.com/watch?v=s2GJyBFRPrw&feature=youtu.be
