@@ -63,9 +63,12 @@ const firebaseConfig = {
   messagingSenderId: "953271204769",
   appId: "1:953271204769:web:5d562d11546fdfc7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+// once the page has been fully loaded, Firebase removes selected genres and song recommendations so the user can select new genres and receive a new list of song recommendations
 $(document).ready(() => {
   database.ref('genres/currentGenres/').remove();
   database.ref('music/currentTracks/').remove();
@@ -83,6 +86,7 @@ setPlaybackSetting(1);
 */
 function onSpotifyPlayerAPIReady() {
 
+  // create new Spotify Player
   let player = new Spotify.Player({
     name: 'User',
     getOAuthToken: (cb) => {
@@ -116,11 +120,14 @@ function onSpotifyPlayerAPIReady() {
 function setPlaybackSetting(setting) {
   playbackSetting = setting;
 
+  // pause song
   if (setting == 0) {
     deviceId = null;
     pause();
     $('#current-playback').text('None');
     $('.track-element').removeClass('current-track');
+
+  // play song
   } else if (setting == 1) {
 
     // 'once' reads the value once from the database
@@ -161,7 +168,11 @@ function findSongID() {
     dataType: 'json',
     success: (data) => {
       console.log('You received some data!', data);
+
+      // check if the Ajax call resulted in receiving relevant data
       if (data.tracks.items.length > 0) {
+
+        // get song ID from data and console.log() data to ensure we received the correct data
         const songID = data["tracks"]["items"]["0"]["id"];
         console.log('Song ID: ', songID);
         const songName = document.getElementById('songName');
@@ -169,6 +180,7 @@ function findSongID() {
         console.log('requestURL: ' + requestURL);
         console.log('token: ' + _token);
 
+        // get searched song URI to render the respective track
         let searchedTrack = 'spotify:track:' + songID;
         console.log('searchedTrack: ' + searchedTrack);
         $('#searched-track').empty();
@@ -232,7 +244,7 @@ function findSongID() {
 
 /**
   * @desc Get a list of song recommendations based on the corresponding search parameters
-  * @param artistGenres - genres of the search song's artist, songTempo - BPM value of the search song
+  * @param artistGenres - genres of the searched song's artist, songTempo - BPM value of the searched song
   * @return none
 */
 function getSimilarRecommendations(artistGenres, songTempo) {
@@ -241,7 +253,7 @@ function getSimilarRecommendations(artistGenres, songTempo) {
   let targetTempo = songTempo;
   let genresString = genres.join().replace(/ /g, '-');
 
-  // set up requestURL to get song recommendations
+  // set up requestURL to get song recommendations and console.log() to ensure we are working with the correct data
   requestURL = '/recommendations2?seed_genres=' + genresString + '&target_tempo=' + targetTempo + '&token=' + _token;
   console.log('this is the genreString: ', genresString);
   console.log(targetTempo);
@@ -254,6 +266,8 @@ function getSimilarRecommendations(artistGenres, songTempo) {
     type: 'GET',
     dataType: 'json',
     success: (data) => {
+
+      // get artist genres and song BPM value to later check if the searched song is within our search parameters
       console.log('You received some data!', data);
       console.log(data);
       const genres = document.getElementById('genres');
@@ -263,10 +277,13 @@ function getSimilarRecommendations(artistGenres, songTempo) {
       console.log('targetTempo: ' + targetTempo);
       console.log('current genre ' + currentGenres[0]);
 
+      // empty old tracks and BPM value to display the new values
       $('#tracks').empty();
       $('#songTempo').empty();
       let trackIds = [];
       let trackUris = [];
+
+      // check if there are song recommendations and the searched song is within our search parameters
       if(data.tracks && (currentGenres !== '') && (targetTempo >= 40 && targetTempo <= 200)) {
         if(data.tracks.length > 0) {
           $('#songTempo').text("Your searched song is shown above, and song recommendations are shown below. Hover over a song's album art to see its audio features.");
@@ -284,6 +301,8 @@ function getSimilarRecommendations(artistGenres, songTempo) {
         } else {
           $('#songTempo').text("Your searched song is shown above, but there are no recommendations available. Hover over its album art to see its audio features.");
         }
+
+      // various edge cases in which the searched song does not meet our search parameters
       } else if (currentGenres === '' && (targetTempo >= 40 && targetTempo <= 200)) {
         $('#tracks').append('<h2>No results. Please enter another song name.</h2>');
       } else if (targetTempo !== '' && (targetTempo < 40 || targetTempo > 200)) {
@@ -322,8 +341,12 @@ const pitch_class = {
 */
 function renderTrack(ids) {
   console.log('in renderTrack with ids: ' + ids);
+
+  // make GET request to get the track URI of the searched song
   $.get('/tracks?ids=' + ids.substring(14) + '&token=' + _token, (tracks) => {
     tracks.forEach((track) => {
+
+      // make GET request to get the searched song's audio features to display the searched song with its respective audio features
       $.get('/track?trackID=' + track.uri.substring(14) + '&token=' + _token, (trackDetails) => {
         let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
         let trackElement = '<div class="track-element" id="' + track.uri + '"><div><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + pitch_class[trackDetails.key.toString()] + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li><li><div class="icon_wrap"><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/><ul class="icon_description" onclick="saveSong(\'' + track.uri + '\');"><p id="save_hidden">Save</p></ul></div></li></ul></div></div>';
@@ -344,11 +367,17 @@ function renderTrack(ids) {
 */
 function renderTracks(ids) {
   console.log('in renderTracks with ids: ' + ids);
+
+  // make GET request to get the track URI of each saved song
   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, (tracks) => {
     tracks.forEach((track) => {
       let searchedTrackID = $('#searched-track .track-element').attr('id').substring(14);
       let trackID = track.uri.substring(14);
+
+      // check if the searched song ID does not match one of the song recommendations IDs so we do not display the searched song again
       if (trackID != searchedTrackID) {
+
+        // make GET request to get each song's audio features to display each saved song with its respective audio features
         $.get('/track?trackID=' + track.uri.substring(14) + '&token=' + _token, (trackDetails) => {
           let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
           let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="../images/remove-icon.png" onclick="remove(\'' + track.uri + '\');"/><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + pitch_class[trackDetails.key.toString()] + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li><li><div class="icon_wrap"><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/><ul class="icon_description" onclick="saveSong(\'' + track.uri + '\');"><p id="save_hidden">Save</p></ul></div></li></ul></div></div>';
@@ -374,6 +403,8 @@ function saveSong(track) {
 
   // 'once' reads the value once from the database
   database.ref('savedSongs/' + trackID).once('value', (snapshot) => {
+
+    // check if song already exists in Firebase to alert user
     if (snapshot.exists()) {
       alert('This song has already been saved to your profile.');
     } else {
