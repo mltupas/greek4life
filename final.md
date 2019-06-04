@@ -20,9 +20,11 @@ ___Mark Tupas___
 * Provided a screen capture of our application to demonstrate its various uses in a demo video
 
 ___Raul Garza___
-*  Worked mostly on creating UI for the homepage and writing front-end code in HTML & CSS for the rest of the app.
+*  Helped on providing design themes for the intended web app users.
+*  Worked on creating UI for the entire homepage and writing front-end code in HTML & CSS for the rest of the the pages seen.
 *  Worked on creating unifying color scheme and font choice.
-*  Used Pixelmator Pro graphic editing software to create the Music Master logos and accompanying graphic images seen.
+*  Assited Allston in coding the JS portion of the play and save buttons used in both search pages.
+*  Used Pixelmator Pro graphic editing software to create the Music Master logos and accompanying graphic images seen throughout Music Master.
 
 ___Cole Richmond___
 * Created the initial storyboards for the team's original project idea that were eventually scrapped and replaced with Music Master.
