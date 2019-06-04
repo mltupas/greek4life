@@ -24,7 +24,10 @@ ___Raul Garza___
 *  Used Pixelmator Pro graphic editing software to create the Music Master logos and accompanying graphic images seen.
 
 ___Cole Richmond___
-* ...
+* Created the initial storyboards for the team's original project idea that were eventually scrapped and replaced with Music Master.
+* Assisted in the front-end development (HTML & JS) of the application to ensure there were no dead-ends and the user was able to get from start to finish with no issue.
+* Worked to set up and complete each milestone's markdown file so that all rubric items were met and the team had a clear plan for the week's tasks in the team repository on GitHub.
+* Worked with Mark to complete the application's video walkthrough by providing audio in the form of narration as well as background music in iMovie.
 
 # Source Code Files
 
