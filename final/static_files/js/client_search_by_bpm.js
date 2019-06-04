@@ -9,8 +9,8 @@
  *
  * Description.
  * Specifically, this file contains the Spotify API and Firebase credentials to 
- * have our application access Spotify to play music, get a list of genres,
- * get a list of song recommendations, and display the recommendations, 
+ * have our application access Spotify to play, pause, and update the currently playing music, get a list of genres,
+ * search for song recommendations based on genres and a target BPM value, get a list of song recommendations, and display the recommendations with the option to remove any recommendations from the current list of recommendations, 
  * and access Firebase to save songs, current song recommendations, and other settings
  * in their realtime database.
  *
