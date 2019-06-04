@@ -3,7 +3,7 @@ ___Greek 4 Life___
 
 # Team Members Contributions
 
-*Paragraph or bullet points briefly describing all of their contributions to your team's project. What did each team member contribute throughout the quarter?*
+*Here are bullet points briefly describing each of our contributions to our team's project.*
 
 ___Allston Fojas___
 * Wrote the backend code in each of the JS pages for each respective HTML page to access the Spotify API's endpoints and Firebase to update the realtime database
@@ -54,15 +54,15 @@ final
 
 >>> client_saved_music.js
 
-* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play music, and display the saved music, and access Firebase to access saved songs, and other settings in their realtime database.
+* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play, pause, and update the currently playing music, and display the saved music, and access Firebase to access and remove any saved songs, and other settings in their realtime database.
 
 >>> client_search_by_bpm.js
 
-* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play music, get a list of genres, get a list of song recommendations, and display the recommendations, and access Firebase to save songs, current song recommendations, and other settings in their realtime database.
+* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play, pause, and update the currently playing music, get a list of genres, search for song recommendations based on genres and a target BPM value, get a list of song recommendations, and display the recommendations with the option to remove any recommendations from the current list of recommendations, and access Firebase to save songs, current song recommendations, and other settings in their realtime database.
 
 >>> client_search_by_song.js
 
-* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play music, search for recommendations based on a song title, get a list of song recommendations, and display the recommendations, and access Firebase to save songs, current song recommendations, and other settings in their realtime database.
+* This file contains the Spotify API and Firebase credentials to have our application access Spotify to play, pause, and update the currently playing music, search for song recommendations based on a song title, get a list of song recommendations, and display the recommendations with the option to remove any recommendations from the current list of recommendations, and access Firebase to save songs, current song recommendations, and other settings in their realtime database.
 
 >> index.html
 
@@ -70,15 +70,15 @@ final
 
 >> saved_music.html
 
-* This page is where users are able to store their favorite songs to be used later. Additionally, users are able to play their saved songs using the playback setting from the Spotify API as well as remove songs from their list of saved songs. Furthermore, this file contains the function to display a user's list of saved songs that the DJ could use for their next mix/playlist. We get playback functionality and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, playback functionality, and a display of the user's list of saved songs. The user can see each song's important audio features and play the song to help them create their next mix/playlist.
+* This page is where users are able to store their favorite songs to be used later. Additionally, users are able to play their saved songs using the playback setting from the Spotify API as well as remove songs from their list of saved songs. Furthermore, this file contains the function to display a user's list of saved songs that the DJ could use for their next mix/playlist. We get playback functionality and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, playback functionality, and a display of the user's list of saved songs. The user can see each song's important audio features and play the song to help them create their next mix/playlist. Finally, there is a reference to the Firebase JS SDK so our application uses the realtime database offered by Firebase.
 
 >> search_by_bpm.html
 
-* This file contains the function to search by a BPM value to receive a list of song recommendations for DJs to use for their next mix/playlist. We get song recommendations and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, a modal to select up to 5 genres, playback functionality, a text box to input a BPM value, a Search button, a Saved Songs button, and some descriptive text to inform the user on how to navigate this page. Additionally, when the user clicks Search, the list of song recommendations get displayed, where the user can see each song's important audio features, play the song, and save the song to their saved songs.
+* This file contains the function to search by a BPM value to receive a list of song recommendations for DJs to use for their next mix/playlist. We get song recommendations and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, a modal to select up to 5 genres, playback functionality, a text box to input a BPM value, a Search button, a Saved Songs button, and some descriptive text to inform the user on how to navigate this page. Additionally, when the user clicks Search, the list of song recommendations get displayed, where the user can see each song's important audio features, play the song, and save the song to their saved songs. Finally, there is a reference to the Firebase JS SDK so our application uses the realtime database offered by Firebase.
 
 >> search_by_song.html
 
-* This file contains the function to search by a song title to receive a list of song recommendations for DJs to use for their next mix/playlist. We get song recommendations and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, playback functionality, a text box to input a song title, a Search button, a Saved Songs button, and some descriptive text to inform the user on how to navigate this page. Additionally, when the user clicks Search, the list of song recommendations get displayed, where the user can see each song's important audio features, play the song, and save the song to their saved songs.
+* This file contains the function to search by a song title to receive a list of song recommendations for DJs to use for their next mix/playlist. We get song recommendations and other useful functions by using the Spotify API, which is referenced in the <head>. This file includes a Go to Home Page button, playback functionality, a text box to input a song title, a Search button, a Saved Songs button, and some descriptive text to inform the user on how to navigate this page. Additionally, when the user clicks Search, the list of song recommendations get displayed, where the user can see each song's important audio features, play the song, and save the song to their saved songs. Finally, there is a reference to the Firebase JS SDK so our application uses the realtime database offered by Firebase.
 
 > server.js
 
