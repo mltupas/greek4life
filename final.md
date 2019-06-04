@@ -21,8 +21,8 @@ ___Mark Tupas___
 
 ___Raul Garza___
 *  Helped on providing design themes for the intended web app users.
-*  Worked on creating UI for the entire homepage and writing front-end code in HTML & CSS for the rest of the the pages seen.
-*  Worked on creating unifying color scheme and font choice.
+*  Worked on creating UI for the entire homepage and writing front-end code in HTML & CSS for the rest of the pages seen.
+*  Worked on creating unifying color scheme and font choice for the Music Master brand.
 *  Assited Allston in coding the JS portion of the play and save buttons used in both search pages.
 *  Used Pixelmator Pro graphic editing software to create the Music Master logos and accompanying graphic images seen throughout Music Master.
 
