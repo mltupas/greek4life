@@ -9,9 +9,9 @@
  *
  * Description.
  * Specifically, this file contains the Spotify API and Firebase credentials to 
- * have our application access Spotify to play music, and display the saved music, 
- * and access Firebase to access saved songs, and other settings
- * in their realtime database.
+ * have our application access Spotify to play, pause, and update the currently playing music, 
+ * and display the saved music, and access Firebase to access and remove any saved songs, 
+ * and other settings in their realtime database.
  *
  * @file   client_saved_music.js.
  */
@@ -62,15 +62,17 @@ const firebaseConfig = {
   messagingSenderId: "953271204769",
   appId: "1:953271204769:web:5d562d11546fdfc7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+// once the page has been fully loaded, Firebase removes selected genres and song recommendations (if applicable) and updates the list of saved songs
 $(document).ready(() => {
   database.ref('genres/currentGenres/').remove();
   database.ref('music/currentTracks/').remove();
 
-  // use .on('value', ...) to get notified in real-time whenever anyone
-  // on the internet updates your database.
+  // 'once' reads the value once from the database to update the list of saved songs
   database.ref('savedSongs/').once('value', (snapshot) => {
     const savedSongs = snapshot.val();
     console.log('savedSongs/ changed:', savedSongs);
@@ -91,12 +93,13 @@ let playbackSetting;
 setPlaybackSetting(1);
 
 /**
-  * @desc Initialize Web Playback SDK
+  * @desc Initialize Spotify Web Playback SDK
   * @param none
   * @return none
 */
 function onSpotifyPlayerAPIReady() {
   
+  // create new Spotify Player
   let player = new Spotify.Player({
     name: 'User',
     getOAuthToken: (cb) => {
@@ -130,11 +133,14 @@ function onSpotifyPlayerAPIReady() {
 function setPlaybackSetting(setting) {
   playbackSetting = setting;
   
+  // pause song
   if (setting == 0) {
     deviceId = null;
     pause();
     $('#current-playback').text('None');
     $('.track-element').removeClass('current-track');
+
+  // play song
   } else if (setting == 1) {
 
     // 'once' reads the value once from the database
@@ -183,8 +189,12 @@ function renderTracks(savedSongs) {
   console.log('in renderTracks');
   console.log('savedSongs: ');
   console.log(savedSongs);
+
+  // make GET request to get the track URI of each saved song
   $.get('/tracks?ids=' + savedSongs + '&token=' + _token, (tracks) => {
     tracks.forEach((track) => {
+
+      // make GET request to get each song's audio features to display each saved song with its respective audio features
       $.get('/track?trackID=' + track.uri.substring(14) + '&token=' + _token, (trackDetails) => {
         let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
         let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="../images/remove-icon.png" onclick="remove(\'' + track.uri + '\');"/><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + pitch_class[trackDetails.key.toString()] + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li></ul></div></div>';
@@ -234,7 +244,7 @@ function pause() {
 }
 
 /**
-  * @desc Remove a song from the current list of song recommendations 
+  * @desc Remove a song from the current list of saved songs
   * @param track - current track to remove
   * @return none
 */

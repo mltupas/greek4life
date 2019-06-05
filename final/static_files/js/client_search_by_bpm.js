@@ -9,8 +9,8 @@
  *
  * Description.
  * Specifically, this file contains the Spotify API and Firebase credentials to 
- * have our application access Spotify to play music, get a list of genres,
- * get a list of song recommendations, and display the recommendations, 
+ * have our application access Spotify to play, pause, and update the currently playing music, get a list of genres,
+ * search for song recommendations based on genres and a target BPM value, get a list of song recommendations, and display the recommendations with the option to remove any recommendations from the current list of recommendations, 
  * and access Firebase to save songs, current song recommendations, and other settings
  * in their realtime database.
  *
@@ -63,9 +63,12 @@ const firebaseConfig = {
   messagingSenderId: "953271204769",
   appId: "1:953271204769:web:5d562d11546fdfc7"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
+
+// once the page has been fully loaded, Firebase removes selected genres and song recommendations so the user can select new genres and receive a new list of song recommendations
 $(document).ready(() => {
   database.ref('genres/currentGenres/').remove();
   database.ref('music/currentTracks/').remove();
@@ -84,6 +87,7 @@ genreLimitAlert("off");
 */
 function onSpotifyPlayerAPIReady() {
 
+  // create new Spotify Player
   let player = new Spotify.Player({
     name: 'User',
     getOAuthToken: function(cb) {
@@ -120,11 +124,14 @@ function onSpotifyPlayerAPIReady() {
 function setPlaybackSetting(setting) {
   playbackSetting = setting;
 
+  // pause song
   if (setting == 0) {
     deviceId = null;
     pause();
     $('#current-playback').text('None');
     $('.track-element').removeClass('current-track');
+
+  // play song
   } else if (setting == 1) {
 
     // 'once' reads the value once from the database
@@ -166,6 +173,7 @@ function genreLimitAlert(state) {
   * @return none
 */
 function getGenresList() {
+  // list of relevant genres that DJs would frequently use
   const genresToDisplay = [
     'chicago-house',
     'chill',
@@ -189,6 +197,7 @@ function getGenresList() {
     'trance'
   ];
 
+  // empty old genres list to display the genres list each time the user opens the modal
   $('#genres-list').empty();
   $.get('/genres?token=' + _token, function(genres) {
     genres.forEach(function(genre) {
@@ -199,6 +208,7 @@ function getGenresList() {
     });
   });
 
+  // checks if the user chooses more than 5 genres to alert the user
   $('#genres-list').on('change', 'input', function() {
     if($('#genres-list input:checked').length > 5) {
       $(this).parent().removeClass("active");
@@ -252,6 +262,7 @@ function updateGenres() {
 function getRecommendations() {
   // 'once' reads the value once from the database
   database.ref('genres/currentGenres').once('value', (snapshot) => {
+    // set up genres to send in requestURL
     let genresString = snapshot.val();
     requestURL = '/recommendations?seed_genres=' + genresString + '&target_tempo=' + $('#targetTempo').val() + '&token=' + _token;
     console.log('requestURL: ' + requestURL);
@@ -262,6 +273,8 @@ function getRecommendations() {
       type: 'GET',
       dataType: 'json',
       success: (data) => {
+
+        // get artist genres and target BPM value to later check if the values are within our search parameters
         console.log('You received some data!', data);
         const genres = document.getElementById('genres');
         const currentGenres = genres.getElementsByTagName('span');
@@ -269,10 +282,13 @@ function getRecommendations() {
         console.log('currentGenres: ' + currentGenres[0].innerHTML);
         console.log('targetTempo: ' + targetTempo.value);
 
+        // empty old tracks and directions to display the new values
         $('#tracks').empty();
         $('#hoverDirections').empty();
         let trackIds = [];
         let trackUris = [];
+
+        // check if there are song recommendations and the current search values are within our search parameters
         if(data.tracks && (currentGenres[0].innerHTML !== '') && (targetTempo.value >= 40 && targetTempo.value <= 200)) {
           if(data.tracks.length > 0) {
             $('#hoverDirections').text("Here are some song recommendations. Hover over a song's album art to see its audio features.");
@@ -319,8 +335,11 @@ const pitch_class = {
   * @return none
 */
 function renderTracks(ids) {
+  // make GET request to get the track URI of each saved song
   $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
     tracks.forEach(function(track) {
+
+      // make GET request to get each song's audio features to display each saved song with its respective audio features
       $.get('/track?trackID=' + track.uri.substring(14) + '&token=' + _token, function(trackDetails) {
         let image = track.album.images ? track.album.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
         let trackElement = '<div class="track-element" id="' + track.uri + '"><div><img class="remove-icon" src="../images/remove-icon.png" onclick="remove(\'' + track.uri + '\');"/><div class="img_wrap"><img class="album-art" src="' + image + '"/><ul class="img_description"><p id="tempo_hidden">BPM: ' + trackDetails.tempo + '</p><p id="key_hidden">Key: ' + pitch_class[trackDetails.key.toString()] + '</p><p id="energy_hidden">Energy: ' + trackDetails.energy + '</p><p id="danceability_hidden">Danceability: ' + trackDetails.danceability + '</p></ul></div><div><p id="track-name">' + track.name + '</p><p id="artist-name">' + track.artists[0].name + '</p></div></div><ul style="list-style: none;"><li><div class="icon_wrap"><img class="play-icon" src="images/play.png" onclick="play(\'' + track.uri + '\');"/><ul class="icon_description" onclick="play(\'' + track.uri + '\');"><p id="play_hidden">Play</p></ul></div></li><li><div class="icon_wrap"><img class="save-song-icon" src="images/save-song.png" onclick="saveSong(\'' + track.uri + '\');"/><ul class="icon_description" onclick="saveSong(\'' + track.uri + '\');"><p id="save_hidden">Save</p></ul></div></li></ul></div></div>';
@@ -345,6 +364,8 @@ function saveSong(track) {
 
   // 'once' reads the value once from the database
   database.ref('savedSongs/' + trackID).once('value', (snapshot) => {
+
+    // check if song already exists in Firebase to alert user
     if (snapshot.exists()) {
       alert('This song has already been saved to your profile.');
     } else {
